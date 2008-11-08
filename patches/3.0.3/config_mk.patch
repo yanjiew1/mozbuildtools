@@ -1,0 +1,24 @@
+--- a/mozilla/config/config.mk	2008-08-14 18:00:34 +0800
++++ b/mozilla/config/config.mk	2008-09-28 16:16:35 +0800
+@@ -365,8 +365,10 @@
+ OS_CXXFLAGS += $(PROFILE_GEN_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_GEN_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_GENERATE
+ 
+@@ -376,8 +378,10 @@
+ OS_CXXFLAGS += $(PROFILE_USE_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_USE_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_USE
+ endif # NO_PROFILE_GUIDED_OPTIMIZE

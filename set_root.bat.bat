@@ -1,0 +1,1 @@
+msys\bin\rxvt -e msys/bin/bash start-script/set_root.sh

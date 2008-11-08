@@ -1,0 +1,21 @@
+--- a/widget/src/windows/nsNativeThemeWin.cpp	Fri May  9 08:18:46 2008
++++ b/widget/src/windows/nsNativeThemeWin.cpp	Tue Aug 26 14:58:40 2008
+@@ -1597,11 +1597,13 @@
+         left = 0;
+         break;
+     case NS_THEME_MENUITEMTEXT:
+-        // There seem to be exactly 4 pixels from the edge
+-        // of the gutter to the text: 2px margin (CSS) + 2px padding (here)
+-        SIZE size(GetGutterSize(theme, NULL));
+-        left = size.cx + 2;
+-        break;
++	{
++          // There seem to be exactly 4 pixels from the edge
++          // of the gutter to the text: 2px margin (CSS) + 2px padding (here)
++          SIZE size(GetGutterSize(theme, NULL));
++          left = size.cx + 2;
++	}
++	break;
+     case NS_THEME_MENUSEPARATOR:
+         {
+           SIZE size(GetGutterSize(theme, NULL));

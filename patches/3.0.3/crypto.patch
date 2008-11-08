@@ -1,0 +1,37 @@
+diff --git a/security/manager/Makefile.in b/security/manager/Makefile.in
+--- a/security/manager/Makefile.in
++++ b/security/manager/Makefile.in
+@@ -180,6 +180,8 @@
+ DEFAULT_GMAKE_FLAGS += MOZILLA_CLIENT=1
+ DEFAULT_GMAKE_FLAGS += NO_MDUPDATE=1
+ DEFAULT_GMAKE_FLAGS += NSS_ENABLE_ECC=1
++# Pass theIMPORT_LIB_SUFFIX into the sub makefiles
++DEFAULT_GMAKE_FLAGS += IMPORT_LIB_SUFFIX=.$(IMPORT_LIB_SUFFIX)
+ ABS_topsrcdir   := $(shell cd $(topsrcdir); pwd)
+ ifneq ($(ABS_topsrcdir),$(MOZ_BUILD_ROOT))
+ DEFAULT_GMAKE_FLAGS += BUILD_TREE=$(MOZ_BUILD_ROOT)
+diff --git a/security/nss/lib/ckfw/capi/Makefile b/security/nss/lib/ckfw/capi/Makefile
+--- a/security/nss/lib/ckfw/capi/Makefile
++++ b/security/nss/lib/ckfw/capi/Makefile
+@@ -54,6 +54,9 @@
+ 	-lplc4 \
+ 	-lplds4 \
+ 	-lnspr4 \
++        -lcrypt32 \
++        -ladvapi32 \
++        -lrpcrt4 \
+ 	$(NULL)
+ else 
+ EXTRA_SHARED_LIBS += \
+diff --git a/security/nss/lib/ckfw/capi/cobject.c b/security/nss/lib/ckfw/capi/cobject.c
+--- a/security/nss/lib/ckfw/capi/cobject.c
++++ b/security/nss/lib/ckfw/capi/cobject.c
+@@ -172,7 +172,7 @@
+       len = (len << 8) | (unsigned) *src++;
+     }
+   }
+-  if (len + (src-start) > (unsigned int)size) {
++  if (len + ((unsigned char*)src-start) > (unsigned int)size) {
+     return start;
+   }
+   if (next) {

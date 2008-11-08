@@ -1,0 +1,37 @@
+--- a/widget/src/windows/nsWindow.cpp	Wed May  7 12:46:38 2008
++++ b/widget/src/windows/nsWindow.cpp	Tue Aug 26 14:45:41 2008
+@@ -3123,7 +3123,7 @@
+     return PR_FALSE;
+
+   nsCaseInsensitiveStringComparator comp;
+-  return comp(aChars1, aChars2, aNumChars1) == 0;
++  return comp((PRUnichar*)aChars1, (PRUnichar*)aChars2, aNumChars1) == 0;
+ }
+ 
+ /**
+--- a/widget/src/windows/nsBidiKeyboard.cpp	Wed Mar 12 06:46:31 2008
++++ b/widget/src/windows/nsBidiKeyboard.cpp	Tue Aug 26 14:49:55 2008
+@@ -156,11 +156,11 @@
+   while (keyboards--) {
+     locale = buf[keyboards];
+     if (IsRTLLanguage(locale)) {
+-      sprintf(mRTLKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID(locale));
++      sprintf(mRTLKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID((DWORD)locale));
+       isRTLKeyboardSet = PR_TRUE;
+     }
+     else {
+-      sprintf(mLTRKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID(locale));
++      sprintf(mLTRKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID((DWORD)locale));
+       isLTRKeyboardSet = PR_TRUE;
+     }
+   }
+@@ -210,7 +210,7 @@
+ PRBool nsBidiKeyboard::IsRTLLanguage(HKL aLocale)
+ {
+   LOCALESIGNATURE localesig;
+-  return (::GetLocaleInfoW(PRIMARYLANGID(aLocale),
++  return (::GetLocaleInfoW(PRIMARYLANGID((DWORD)aLocale),
+                            LOCALE_FONTSIGNATURE,
+                            (LPWSTR)&localesig,
+                            (sizeof(localesig)/sizeof(WCHAR))) &&
+

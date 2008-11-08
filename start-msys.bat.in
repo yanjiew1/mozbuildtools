@@ -1,0 +1,7 @@
+set MOZ_TOOLS=%ROOT%\moztools
+set PATH=%ROOT%\mingw\bin;%ROOT%\scripts;%ROOT%\msys\bin;%ROOT%\msys\usr\bin;%ROOT%\msys\usr\usr\local\bin;%PATH%;%ROOT%\Python26;%ROOT%\tools;%ROOT%\moztools\bin;%ROOT%\NSPR\bin
+set CVSROOT=:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
+set HOME=%ROOT%
+cd msys
+# bin\rxvt -e bash --login -i
+msys

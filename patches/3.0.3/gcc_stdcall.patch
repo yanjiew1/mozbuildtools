@@ -1,0 +1,17 @@
+diff --git a/xpcom/base/nscore.h b/xpcom/base/nscore.h
+--- a/xpcom/base/nscore.h
++++ b/xpcom/base/nscore.h
+@@ -254,13 +254,8 @@
+  *  when http://gcc.gnu.org/bugzilla/show_bug.cgi?id=11893 is fixed.
+  */
+ 
+-#ifdef __GNUC__
+-#define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+-  typeof(&class::func) name
+-#else
+ #define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+   ret (NS_STDCALL class::*name) args
+-#endif
+ 
+ /**
+  * Deprecated declarations.

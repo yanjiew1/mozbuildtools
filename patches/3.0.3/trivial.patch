@@ -1,0 +1,12 @@
+diff --git a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
+--- a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
++++ b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
+@@ -58,6 +58,8 @@
+ #include "png.h"
+ 
+ #include "gfxPlatform.h"
++
++#include <limits.h>
+ 
+ static void PNGAPI info_callback(png_structp png_ptr, png_infop info_ptr);
+ static void PNGAPI row_callback(png_structp png_ptr, png_bytep new_row,

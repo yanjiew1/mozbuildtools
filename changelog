@@ -1,0 +1,19 @@
+--- 2008-11-08 Jay Wang stu90206@gmail.com
+ * 更新 NSPR 至 4.7.3 (已經附上)
+ * 刪除部份 Patch 檔，改由使用者自行至 Patch 檔案櫃下載
+ * 新增 pkg-config 0.2.3
+ * 新增 tofrodos 1.7.8 (已經附上)
+ * Version 0.1.1 RC 釋出
+
+--- 2008-11-02 Jay Wang stu90206@gmail.com
+ * 更新 w32api 至 3.12
+ * 更新 MinGW-Runtime 至 3.15.1
+ * 刪除部份無用的 MinGW patch
+ * 修正了在 /usr/local/bin 無法對應 Path 的問題
+ * 添加 autoconf-2.13
+ * 更新 Python 至 2.6
+ * 預計 添加 jsnum_cpp.patch 以支援最新 3.1 版本
+ * Version 0.1.1 Beta1 釋出
+
+--- 2008-10-10 Jay Wang stu90206@gmail.com
+ * Version 0.1 釋出
