@@ -28,9 +28,13 @@ cd download
 ..\tools\wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip
 ..\tools\wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip
 ..\tools\wget -c http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.18/glib_2.18.2-1_win32.zip
+..\tools\wget -c http://mercurial.berkwood.com/binaries/Mercurial-1.0.2.exe
 ..\tools\7za e ../download/*.bz2
 ..\tools\7za e ../download/*.gz
 cd ..
+download\innounp.exe -x download\Mercurial-1.0.2.exe
+rename {app} Mercurial
+copy install_script.iss Mercurial\install_script.iss
 
 mkdir msys 2> nul
 cd msys
