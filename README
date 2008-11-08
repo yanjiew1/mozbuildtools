@@ -26,7 +26,6 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 
 ＊ 正式版還未達成目標:
   - 正式版本: 0.1.1
-  - 升級 NSPR 到 4.7.2
 
 ＊ 特點:
   - 不必安裝龐大的 Visual C++
