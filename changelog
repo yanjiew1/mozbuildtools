@@ -1,6 +1,10 @@
 ﻿--- 2008-11-09 Jay Wang stu90206@gmail.com
  * 添加 Inno Setup Unpacker 0.20 (已經附上)
  * 添加 Mercurial 1.0.2
+ * Version 0.1.1 釋出
+ * 添加 UPX 3.0.3
+ * 添加 NSIS 2.22
+ * 將 7za.exe 複製一份更名為 7z.exe
 
 --- 2008-11-08 Jay Wang stu90206@gmail.com
  * 更新 NSPR 至 4.7.3 (已經附上)
