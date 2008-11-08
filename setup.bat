@@ -32,7 +32,8 @@ cd download
 ..\tools\7za e ../download/*.bz2
 ..\tools\7za e ../download/*.gz
 cd ..
-download\innounp.exe -x download\Mercurial-1.0.2.exe
+
+tools\innounp.exe -x download\Mercurial-1.0.2.exe
 rename {app} Mercurial
 copy install_script.iss Mercurial\install_script.iss
 
