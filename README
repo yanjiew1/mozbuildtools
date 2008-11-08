@@ -1,12 +1,12 @@
-mozbuildtools �ϥλ���
+﻿mozbuildtools 使用說明
 ------------------------------
-mozbuildtools �O�@���p�e�A��{�ϥ� MinGW �b Windows �sĶ Mozilla�C
-�ثe���� Firefox �i�H���\���Q�sĶ�C
+mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
+目前測試 Firefox 可以成功的被編譯。
 
-�� ��������(�������խ��I): 
-  - ����: 0.1.1 RC
-  - �ɯŤF�����禡�w
-  - GCC �O�d��í�w�� 4.2.1 �C�����ɬ�: 
+＊ 版本說明(本次測試重點): 
+  - 版本: 0.1.1 RC
+  - 升級了部份函式庫
+  - GCC 保留較穩定的 4.2.1 。執行檔為: 
    * gcc-sjlj.exe
    * g++-sjlj.exe
    * cpp-sjlj.exe
@@ -15,52 +15,52 @@ mozbuildtools �O�@���p�e�A��{�ϥ� MinGW �b Windows �sĶ Mozilla�C
    * mingw32-g++-sjlj.exe
    * mingw32-gcc-4.2.1-sjlj.exe
    * mingw32-gcc-sjlj.exe
-  - �ɯ� Python �� 2.6
-  - �ɯ� w32api �� 3.12
-  - �ɯ� MinGW-Runtime �� 3.15.1
-  - �R�� MinGW Patch �� (�ɯ� MinGW �Y�ѨM���D)
-  - �ɯ� NSPR �� 4.7.3
-  - �s�W tofrodos 1.7.8
-  - �s�W pkg-config 0.2.3
-  - �R������ patch ��(��Ѻ����U��)
+  - 升級 Python 至 2.6
+  - 升級 w32api 至 3.12
+  - 升級 MinGW-Runtime 至 3.15.1
+  - 刪除 MinGW Patch 檔 (升級 MinGW 即解決問題)
+  - 升級 NSPR 至 4.7.3
+  - 新增 tofrodos 1.7.8
+  - 新增 pkg-config 0.2.3
+  - 刪除部份 patch 檔(改由網路下載)
 
-�� �������٥��F���ؼ�:
-  - ��������: 0.1.1
-  - �ɯ� NSPR �� 4.7.2
+＊ 正式版還未達成目標:
+  - 正式版本: 0.1.1
+  - 升級 NSPR 到 4.7.2
 
-�� �S�I:
-  - �����w���e�j�� Visual C++
-  - �{���p�A�Ѷ}�o�̧Q��
-  - �i�ΨӶ}�o���s�� Firefox
+＊ 特點:
+  - 不必安裝龐大的 Visual C++
+  - 程式小，供開發者利用
+  - 可用來開發社群版 Firefox
 
-�� �ݸѨM�ؼ�:
-  - �sĶ�᪺ Firefox ��{�������[���󪺥i��
+＊ 待解決目標:
+  - 編譯後的 Firefox 實現全部附加元件的可用
 
-�� �w�˨B�J:
-  1. ���� Setup.bat
-  2. ���{���]���A�A���� install-python.bat
-  3. �M����� start-msys.bat �N�i�Ұ� msys
-  4. �p�ݲM�z�Ŷ��A�аѾ\�U�����u�w�˦n��Ŷ��M�z�v
- -- �ԲӨB�J�аѾ\��������
+＊ 安裝步驟:
+  1. 執行 Setup.bat
+  2. 等程式跑完，再執行 install-python.bat
+  3. 然後執行 start-msys.bat 就可啟動 msys
+  4. 如需清理空間，請參閱下面的「安裝好後空間清理」
+ -- 詳細步驟請參閱網頁說明
 
-�� �`�N�ƶ�:
-  - ���{������w�˦b�t���ťզr�������|
-  - ��ĳ���n�ϥ� Vista �t��
-  - �sĶ�n���檺�ɮ׫�A�O�o�N NSPR�Bmoztools �� DLL �ɸ� Firefox ��b�@�_�~��B�@�C
+＊ 注意事項:
+  - 此程式不能安裝在含有空白字元的路徑
+  - 建議不要使用 Vista 系統
+  - 編譯好執行的檔案後，記得將 NSPR、moztools 的 DLL 檔跟 Firefox 放在一起才能運作。
 
-�� �w�˦n��Ŷ��M�z:
-  - �R�� download �ؿ�
-  - �R�� python-2.6.msi �w����
-  - �R�� install-python.bat
-  - �R�� msys/download �ؿ�
+＊ 安裝好後空間清理:
+  - 刪除 download 目錄
+  - 刪除 python-2.6.msi 安裝檔
+  - 刪除 install-python.bat
+  - 刪除 msys/download 目錄
 
-�� �p�ݤU�� Firefox 3.1 �̷s����l�X�A�Ц�
+＊ 如需下載 Firefox 3.1 最新的原始碼，請至
 http://hg.mozilla.org/mozilla-central/summary
 
-�� �p�ݤU���̷s Patch �A�Ц�
+＊ 如需下載最新 Patch ，請至
 http://sites.google.com/site/usemingwtobuildfirefox/Home/patch-dang-an-gui
 
-��ĳ .mozconfig
+建議 .mozconfig
 -------------------
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../mozilla-mingw
@@ -79,7 +79,7 @@ ac_add_options  --disable-static
 ac_add_options  --with-branding=browser/branding/unofficial
 ac_add_options  --enable-strip
 
-# �@��ϥΪ̫�ĳ�ϥ� -w ������ĵ�i�T���H�W�ֽsĶ�t�סA�p�O�}�o�̴N��������
+# 一般使用者建議使用 -w 來隱藏警告訊息以增快編譯速度，如是開發者就不必隱藏
 CFLAGS="-w"
 CXXFLAGS="-w"
 CPPFLAGS="-w"

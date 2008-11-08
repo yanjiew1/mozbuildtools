@@ -1,19 +1,19 @@
---- 2008-11-08 Jay Wang stu90206@gmail.com
- * §ó·s NSPR ¦Ü 4.7.3 (¤w¸gªş¤W)
- * §R°£³¡¥÷ Patch ÀÉ¡A§ï¥Ñ¨Ï¥ÎªÌ¦Û¦æ¦Ü Patch ÀÉ®×Âd¤U¸ü
- * ·s¼W pkg-config 0.2.3
- * ·s¼W tofrodos 1.7.8 (¤w¸gªş¤W)
- * Version 0.1.1 RC ÄÀ¥X
+ï»¿--- 2008-11-08 Jay Wang stu90206@gmail.com
+ * æ›´æ–° NSPR è‡³ 4.7.3 (å·²ç¶“é™„ä¸Š)
+ * åˆªé™¤éƒ¨ä»½ Patch æª”ï¼Œæ”¹ç”±ä½¿ç”¨è€…è‡ªè¡Œè‡³ Patch æª”æ¡ˆæ«ƒä¸‹è¼‰
+ * æ–°å¢ pkg-config 0.2.3
+ * æ–°å¢ tofrodos 1.7.8 (å·²ç¶“é™„ä¸Š)
+ * Version 0.1.1 RC é‡‹å‡º
 
 --- 2008-11-02 Jay Wang stu90206@gmail.com
- * §ó·s w32api ¦Ü 3.12
- * §ó·s MinGW-Runtime ¦Ü 3.15.1
- * §R°£³¡¥÷µL¥Îªº MinGW patch
- * ­×¥¿¤F¦b /usr/local/bin µLªk¹ïÀ³ Path ªº°İÃD
- * ²K¥[ autoconf-2.13
- * §ó·s Python ¦Ü 2.6
- * ¹w­p ²K¥[ jsnum_cpp.patch ¥H¤ä´©³Ì·s 3.1 ª©¥»
- * Version 0.1.1 Beta1 ÄÀ¥X
+ * æ›´æ–° w32api è‡³ 3.12
+ * æ›´æ–° MinGW-Runtime è‡³ 3.15.1
+ * åˆªé™¤éƒ¨ä»½ç„¡ç”¨çš„ MinGW patch
+ * ä¿®æ­£äº†åœ¨ /usr/local/bin ç„¡æ³•å°æ‡‰ Path çš„å•é¡Œ
+ * æ·»åŠ  autoconf-2.13
+ * æ›´æ–° Python è‡³ 2.6
+ * é è¨ˆ æ·»åŠ  jsnum_cpp.patch ä»¥æ”¯æ´æœ€æ–° 3.1 ç‰ˆæœ¬
+ * Version 0.1.1 Beta1 é‡‹å‡º
 
 --- 2008-10-10 Jay Wang stu90206@gmail.com
- * Version 0.1 ÄÀ¥X
+ * Version 0.1 é‡‹å‡º
