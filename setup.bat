@@ -35,7 +35,7 @@ cd ..
 
 tools\innounp.exe -x download\Mercurial-1.0.2.exe
 rename {app} Mercurial
-copy install_script.iss Mercurial\install_script.iss
+move install_script.iss Mercurial\install_script.iss
 
 mkdir msys 2> nul
 cd msys
