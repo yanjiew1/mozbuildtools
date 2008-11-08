@@ -3,8 +3,8 @@
 mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
-＊ 版本說明(本次測試重點): 
-  - 版本: 0.1.1 RC
+＊ 版本說明: 
+  - 版本: 0.1.1
   - 升級了部份函式庫
   - GCC 保留較穩定的 4.2.1 。執行檔為: 
    * gcc-sjlj.exe
@@ -23,9 +23,6 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
   - 新增 tofrodos 1.7.8
   - 新增 pkg-config 0.2.3
   - 刪除部份 patch 檔(改由網路下載)
-
-＊ 正式版還未達成目標:
-  - 正式版本: 0.1.1
 
 ＊ 特點:
   - 不必安裝龐大的 Visual C++
@@ -58,6 +55,9 @@ http://hg.mozilla.org/mozilla-central/summary
 
 ＊ 如需下載最新 Patch ，請至
 http://sites.google.com/site/usemingwtobuildfirefox/Home/patch-dang-an-gui
+
+＊ 授權協議參閱，請至
+http://sites.google.com/site/usemingwtobuildfirefox/Home/shou-quan-xie-yi
 
 建議 .mozconfig
 -------------------
