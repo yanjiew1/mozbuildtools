@@ -1,4 +1,7 @@
-﻿--- 2008-11-08 Jay Wang stu90206@gmail.com
+﻿--- 2008-11-09 Jay Wang stu90206@gmail.com
+ * 添加 Inno Setup Unpacker 0.20 (已經附上)
+
+--- 2008-11-08 Jay Wang stu90206@gmail.com
  * 更新 NSPR 至 4.7.3 (已經附上)
  * 刪除部份 Patch 檔，改由使用者自行至 Patch 檔案櫃下載
  * 新增 pkg-config 0.2.3
