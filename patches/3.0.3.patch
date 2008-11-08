@@ -1,0 +1,251 @@
+#
+#
+# 最後更新日期: 2008/11/09
+# 此 patch 由 Jay Wang 製作
+# 此檔部份來自 https://bugzilla.mozilla.org/show_bug.cgi?id=449557
+#
+# 經過測試，可以在 3.0.3 版本使用
+#
+# 如有意見，請寄送 E-mail 至 stu90206@gmail.com 或加入線上論壇留言
+#
+--- a/config/config.mk	2008-08-14 18:00:34 +0800
++++ b/config/config.mk	2008-09-28 16:16:35 +0800
+@@ -365,8 +365,10 @@
+ OS_CXXFLAGS += $(PROFILE_GEN_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_GEN_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_GENERATE
+ 
+@@ -376,8 +378,10 @@
+ OS_CXXFLAGS += $(PROFILE_USE_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_USE_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_USE
+ endif # NO_PROFILE_GUIDED_OPTIMIZE
+--- a/configure	Fri Jun 27 21:41:02 2008
++++ b/configure	Wed Aug 27 16:18:22 2008
+@@ -1190,7 +1190,7 @@
+     if test -z "$CC"; then CC=cl; fi
+     if test -z "$CXX"; then CXX=cl; fi
+     if test -z "$CPP"; then CPP="cl -E -nologo"; fi
+-    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; ac_cv_prog_CXXCPP="$CXXCPP"; fi
++    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo";fi ;ac_cv_prog_CXXCPP="$CXXCPP"
+     if test -z "$LD"; then LD=link; fi
+     if test -z "$AS"; then AS=ml; fi
+     if test -z "$MIDL"; then MIDL=midl; fi
+@@ -6427,7 +6427,7 @@
+         DYNAMIC_XPCOM_LIBS='-L$(LIBXUL_DIST)/lib -lxpcom -lxpcom_core'
+         XPCOM_FROZEN_LDOPTS='-L$(LIBXUL_DIST)/lib -lxpcom'
+         DLL_PREFIX=
+-        IMPORT_LIB_SUFFIX=dll.a
++        IMPORT_LIB_SUFFIX=a
+     else
+         TARGET_COMPILER_ABI=msvc
+         HOST_CC='$(CC)'
+--- a/widget/src/windows/nsWindow.cpp	Wed May  7 12:46:38 2008
++++ b/widget/src/windows/nsWindow.cpp	Tue Aug 26 14:45:41 2008
+@@ -3123,7 +3123,7 @@
+     return PR_FALSE;
+
+   nsCaseInsensitiveStringComparator comp;
+-  return comp(aChars1, aChars2, aNumChars1) == 0;
++  return comp((PRUnichar*)aChars1, (PRUnichar*)aChars2, aNumChars1) == 0;
+ }
+ 
+ /**
+--- a/widget/src/windows/nsBidiKeyboard.cpp	Wed Mar 12 06:46:31 2008
++++ b/widget/src/windows/nsBidiKeyboard.cpp	Tue Aug 26 14:49:55 2008
+@@ -156,11 +156,11 @@
+   while (keyboards--) {
+     locale = buf[keyboards];
+     if (IsRTLLanguage(locale)) {
+-      sprintf(mRTLKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID(locale));
++      sprintf(mRTLKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID((DWORD)locale));
+       isRTLKeyboardSet = PR_TRUE;
+     }
+     else {
+-      sprintf(mLTRKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID(locale));
++      sprintf(mLTRKeyboard, "%.*x", KL_NAMELENGTH - 1, LANGIDFROMLCID((DWORD)locale));
+       isLTRKeyboardSet = PR_TRUE;
+     }
+   }
+@@ -210,7 +210,7 @@
+ PRBool nsBidiKeyboard::IsRTLLanguage(HKL aLocale)
+ {
+   LOCALESIGNATURE localesig;
+-  return (::GetLocaleInfoW(PRIMARYLANGID(aLocale),
++  return (::GetLocaleInfoW(PRIMARYLANGID((DWORD)aLocale),
+                            LOCALE_FONTSIGNATURE,
+                            (LPWSTR)&localesig,
+                            (sizeof(localesig)/sizeof(WCHAR))) &&
+
+diff --git a/security/manager/Makefile.in b/security/manager/Makefile.in
+--- a/security/manager/Makefile.in
++++ b/security/manager/Makefile.in
+@@ -180,6 +180,8 @@
+ DEFAULT_GMAKE_FLAGS += MOZILLA_CLIENT=1
+ DEFAULT_GMAKE_FLAGS += NO_MDUPDATE=1
+ DEFAULT_GMAKE_FLAGS += NSS_ENABLE_ECC=1
++# Pass theIMPORT_LIB_SUFFIX into the sub makefiles
++DEFAULT_GMAKE_FLAGS += IMPORT_LIB_SUFFIX=.$(IMPORT_LIB_SUFFIX)
+ ABS_topsrcdir   := $(shell cd $(topsrcdir); pwd)
+ ifneq ($(ABS_topsrcdir),$(MOZ_BUILD_ROOT))
+ DEFAULT_GMAKE_FLAGS += BUILD_TREE=$(MOZ_BUILD_ROOT)
+diff --git a/security/nss/lib/ckfw/capi/Makefile b/security/nss/lib/ckfw/capi/Makefile
+--- a/security/nss/lib/ckfw/capi/Makefile
++++ b/security/nss/lib/ckfw/capi/Makefile
+@@ -54,6 +54,9 @@
+ 	-lplc4 \
+ 	-lplds4 \
+ 	-lnspr4 \
++        -lcrypt32 \
++        -ladvapi32 \
++        -lrpcrt4 \
+ 	$(NULL)
+ else 
+ EXTRA_SHARED_LIBS += \
+diff --git a/security/nss/lib/ckfw/capi/cobject.c b/security/nss/lib/ckfw/capi/cobject.c
+--- a/security/nss/lib/ckfw/capi/cobject.c
++++ b/security/nss/lib/ckfw/capi/cobject.c
+@@ -172,7 +172,7 @@
+       len = (len << 8) | (unsigned) *src++;
+     }
+   }
+-  if (len + (src-start) > (unsigned int)size) {
++  if (len + ((unsigned char*)src-start) > (unsigned int)size) {
+     return start;
+   }
+   if (next) {
+diff --git a/xpcom/base/nscore.h b/xpcom/base/nscore.h
+--- a/xpcom/base/nscore.h
++++ b/xpcom/base/nscore.h
+@@ -165,6 +165,22 @@
+ #endif
+ 
+ #ifdef NS_WIN32
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) && defined(__GNUC__)
++
++#define NS_IMPORT __declspec(dllimport)
++#define NS_IMPORT_(type) __declspec(dllimport) type
++#define NS_EXPORT __declspec(dllexport)
++#define NS_EXPORT_(type) __declspec(dllexport) type
++#define NS_IMETHOD_(type) virtual type
++#define NS_IMETHODIMP_(type) type
++#define NS_METHOD_(type) type
++#define NS_CALLBACK_(_type, _name) _type (* _name)
++#define NS_STDCALL
++#define NS_FROZENCALL __cdecl
++#define NS_EXPORT_STATIC_MEMBER_(type) type
++#define NS_IMPORT_STATIC_MEMBER_(type) type
++
++#else
+ 
+ #define NS_IMPORT __declspec(dllimport)
+ #define NS_IMPORT_(type) __declspec(dllimport) type __stdcall
+@@ -184,6 +200,8 @@
+ 
+ #define NS_EXPORT_STATIC_MEMBER_(type) type
+ #define NS_IMPORT_STATIC_MEMBER_(type) type
++
++#endif
+ 
+ #elif defined(XP_OS2) && defined(__declspec)
+ 
+diff --git a/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp b/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
+--- a/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
++++ b/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
+@@ -44,9 +44,15 @@
+ #error "This code is for Win32 only"
+ #endif
+ 
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) && defined(__GNUC__)
++#define STDCALL
++#else
++#define STDCALL __stdcall
++#endif
++
+ extern "C" {
+ 
+-static nsresult __stdcall
++static nsresult STDCALL
+ PrepareAndDispatch(nsXPTCStubBase* self, PRUint32 methodIndex,
+                    PRUint32* args, PRUint32* stackBytesToPop)
+ {
+@@ -157,7 +163,7 @@
+ #else
+ 
+ #define STUB_ENTRY(n) \
+-nsresult __stdcall nsXPTCStubBase::Stub##n() \
++nsresult STDCALL nsXPTCStubBase::Stub##n() \
+ { \
+   PRUint32 *args, stackBytesToPop = 0; \
+   nsresult result = 0; \
+@@ -174,7 +180,7 @@
+ #endif /* __GNUC__ */
+ 
+ #define SENTINEL_ENTRY(n) \
+-nsresult __stdcall nsXPTCStubBase::Sentinel##n() \
++nsresult STDCALL nsXPTCStubBase::Sentinel##n() \
+ { \
+     NS_ASSERTION(0,"nsXPTCStubBase::Sentinel called"); \
+     return NS_ERROR_NOT_IMPLEMENTED; \
+diff --git a/xpcom/base/nscore.h b/xpcom/base/nscore.h
+--- a/xpcom/base/nscore.h
++++ b/xpcom/base/nscore.h
+@@ -254,13 +254,8 @@
+  *  when http://gcc.gnu.org/bugzilla/show_bug.cgi?id=11893 is fixed.
+  */
+ 
+-#ifdef __GNUC__
+-#define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+-  typeof(&class::func) name
+-#else
+ #define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+   ret (NS_STDCALL class::*name) args
+-#endif
+ 
+ /**
+  * Deprecated declarations.
+diff --git a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
+--- a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
++++ b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
+@@ -58,6 +58,8 @@
+ #include "png.h"
+ 
+ #include "gfxPlatform.h"
++
++#include <limits.h>
+ 
+ static void PNGAPI info_callback(png_structp png_ptr, png_infop info_ptr);
+ static void PNGAPI row_callback(png_structp png_ptr, png_bytep new_row,
+--- a/widget/src/windows/nsNativeThemeWin.cpp	Fri May  9 08:18:46 2008
++++ b/widget/src/windows/nsNativeThemeWin.cpp	Tue Aug 26 14:58:40 2008
+@@ -1679,11 +1679,13 @@
+         left = 0;
+         break;
+     case NS_THEME_MENUITEMTEXT:
+-        // There seem to be exactly 4 pixels from the edge
+-        // of the gutter to the text: 2px margin (CSS) + 2px padding (here)
+-        SIZE size(GetGutterSize(theme, NULL));
+-        left = size.cx + 2;
+-        break;
++	{
++          // There seem to be exactly 4 pixels from the edge
++          // of the gutter to the text: 2px margin (CSS) + 2px padding (here)
++          SIZE size(GetGutterSize(theme, NULL));
++          left = size.cx + 2;
++	}
++	break;
+     case NS_THEME_MENUSEPARATOR:
+         {
+           SIZE size(GetGutterSize(theme, NULL));
