@@ -34,8 +34,8 @@
  endif # INTERNAL_TOOLS
  endif # MOZ_PROFILE_USE
  endif # NO_PROFILE_GUIDED_OPTIMIZE
---- a/configure.in	2008-10-04 00:36:28 +0800
-+++ b/configure.in	2008-10-04 21:10:03 +0800
+--- a/configure.in
++++ b/configure.in
 @@ -191,7 +191,7 @@
      if test -z "$CC"; then CC=cl; fi
      if test -z "$CXX"; then CXX=cl; fi
