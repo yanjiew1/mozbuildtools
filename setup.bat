@@ -32,7 +32,10 @@ cd download
 ..\tools\7za e ../download/*.bz2
 ..\tools\7za e ../download/*.gz
 cd ..
-
+tools\wget -c http://jaist.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip
+tools\7za x nsis-2.22.zip
+rename nsis-2.22 NSIS
+move nsis-2.22.zip download\nsis-2.22.zip
 tools\innounp.exe -x download\Mercurial-1.0.2.exe
 rename {app} Mercurial
 move install_script.iss Mercurial\install_script.iss
