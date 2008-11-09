@@ -1,1 +1,0 @@
-cvs -d :pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot co buildtools

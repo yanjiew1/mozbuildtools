@@ -4,27 +4,9 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
 ＊ 版本說明: 
-  - 版本: 0.1.1
-  - 升級了部份函式庫
-  - GCC 保留較穩定的 4.2.1 。執行檔為: 
-   * gcc-sjlj.exe
-   * g++-sjlj.exe
-   * cpp-sjlj.exe
-   * c++-sjlj.exe
-   * mingw32-c++-sjlj.exe
-   * mingw32-g++-sjlj.exe
-   * mingw32-gcc-4.2.1-sjlj.exe
-   * mingw32-gcc-sjlj.exe
-  - 升級 Python 至 2.6
-  - 升級 w32api 至 3.12
-  - 升級 MinGW-Runtime 至 3.15.1
-  - 刪除 MinGW Patch 檔 (升級 MinGW 即解決問題)
-  - 升級 NSPR 至 4.7.3
-  - 新增 tofrodos 1.7.8
-  - 新增 pkg-config 0.2.3
-  - 刪除部份 patch 檔(改由網路下載)
-  - 新增 Inno Setup Unpacker 0.20
-  - 新增 Mercurial 1.0.2
+  - 版本: 0.1.2
+  - 新增 NSIS 2.22 
+  - 新增 UPX 3.0.3 (已附加)
 
 ＊ 特點:
   - 不必安裝龐大的 Visual C++
