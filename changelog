@@ -1,4 +1,9 @@
-﻿--- 2008-11-10 Jay Wang stu90206@gmail.com
+﻿--- 2008-11-13 Jay Wang stu90206@gmail.com
+ * 將 tools 內執行檔用 UPX 壓縮
+ * 將 NSPR 的 DLL 用 UPX 壓縮
+ * 移除 make_installer.sh
+
+--- 2008-11-10 Jay Wang stu90206@gmail.com
  * 修改 README 版本號至 2.0
 
 --- 2008-11-09 Jay Wang stu90206@gmail.com
