@@ -80,7 +80,7 @@ if [ -f fail ] ; then
 fi
 echo ¤U¸ü binutils ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.18.50-20080109-2.tar.gz' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-rc1-bin.tar.gz' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh
