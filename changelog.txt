@@ -3,6 +3,8 @@
  * 修改 README 的檔名，改為 README.txt
  * 修改 changelog 的檔名，改為 changelog
  * 修改 README.txt 版本號至 0.3b1
+ * 更新 GCC 至 4.3.2
+ * 更新 README.txt 的 .mozconfig 示範
 
 --- 2008-11-13 Jay Wang stu90206@gmail.com
  * 將 tools 內執行檔用 UPX 壓縮

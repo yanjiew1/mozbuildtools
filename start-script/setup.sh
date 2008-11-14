@@ -2,7 +2,7 @@
 PATH=/bin
 fail()
 {
-	echo "有一個步驟失敗了，若要重新啟動第二次安裝，請執行 Second.bat"
+	echo "有一個步驟失敗了，若要重新啟動安裝，請執行 Setup.bat"
 	rm -dr /etc/profile.d/setup.sh
 }
 
@@ -12,7 +12,7 @@ mkdir /download 2> nul
 cd /download
 echo 下載 GCC ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-core-4.2.1-sjlj-2.tar.gz' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-1-core.zip' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh
@@ -28,7 +28,7 @@ if [ -f fail ] ; then
 fi
 echo 下載 G++ ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-g++-4.2.1-sjlj-2.tar.gz' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-1-g++.zip' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh
