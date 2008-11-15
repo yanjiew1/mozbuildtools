@@ -9,7 +9,10 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
   - 新增 UPX 3.0.3 (已附加)
   - 更新 binutils 至 2.19 RC1
   - 更新 GCC 至 4.2.4
+  - 刪除 NSPR 資料夾
   - 將部份工具程式使用 UPX 來壓縮
+
+＊ Patch 檔版本需求: 0.3 以上
 
 ＊ 特點:
   - 不必安裝龐大的 Visual C++
@@ -59,7 +62,6 @@ ac_add_options  --disable-installer
 ac_add_options  --disable-accessibility
 ac_add_options  --disable-vista-sdk-requirements
 ac_add_options  --disable-updater
-ac_add_options  --with-system-nspr
 ac_add_options  --enable-shared
 ac_add_options  --disable-static
 ac_add_options  --with-branding=browser/branding/unofficial

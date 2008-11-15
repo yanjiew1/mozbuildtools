@@ -2,6 +2,9 @@
  * 降級 GCC 至 4.2.4
   - 註: 經過測試 GCC 4.3.2 還是無法在某些最佳化參數編譯之下執行，因此降為 4.2.4 ，待新版 GCC 出現再進行測試
  * 從 rxvt 改由 cmd 執行 bash
+ * 新增 Patch檔 版本需求至 README.txt
+ * 修正了許多 bug
+ * 新增歡迎詞至 start-msys.bat.in
 
 --- 2008-11-14 Jay Wang stu90206@gmail.com
  * 更新 binutils 至 2.19 RC1

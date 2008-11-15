@@ -1,0 +1,290 @@
+#
+#
+# 最後更新日期: 2008/11/08
+# 此 patch 由 Jay Wang 製作
+# 此檔部份來自 https://bugzilla.mozilla.org/show_bug.cgi?id=449557
+#
+# 經過測試，可以在 229683caa4c3 (2008-11-09) 版本使用
+#
+# 如有意見，請寄送 E-mail 至 stu90206@gmail.com 或加入線上論壇留言
+#
+# 比較上一個版本，這個版本新增了 config/config.mk 的 patch
+#
+# Patch: Version 0.3
+#
+#
+# 注意事項: 使用完成 Patch 後，請記得將 nsprpub 內的 configure 重新產生一次
+--- a/nsprpub/configure.in
++++ b/nsprpub/configure.in
+@@ -723,6 +723,10 @@
+     OS_ARCH='CYGWIN_NT-4.0'
+     OS_TARGET=WIN95
+     ;;
++MINGW32_NT*)
++    OS_ARCH='WINNT'
++    OS_TARGET=WIN95
++    ;;
+ OS_2)
+     OS_ARCH=OS2
+     OS_TARGET=OS2
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -53,3 +53,7
+ 	$(RM) -rf _tests
++ifeq ($(OS_ARCH),WINNT)
++	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin
++	cp ${MOZ_TOOLS}/bin/*.dll $(DIST)/bin
++endif
+ 
+ TIERS += base
+--- a/config/config.mk
++++ b/config/config.mk
+@@ -373,8 +373,10 @@
+ OS_CXXFLAGS += $(PROFILE_GEN_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_GEN_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_GENERATE
+ 
+@@ -384,8 +386,10 @@
+ OS_CXXFLAGS += $(PROFILE_USE_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_USE_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_USE
+ endif # NO_PROFILE_GUIDED_OPTIMIZE
+--- a/configure.in
++++ b/configure.in
+@@ -191,7 +191,7 @@
+     if test -z "$CC"; then CC=cl; fi
+     if test -z "$CXX"; then CXX=cl; fi
+     if test -z "$CPP"; then CPP="cl -E -nologo"; fi
+-    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; ac_cv_prog_CXXCPP="$CXXCPP"; fi
++    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; fi; ac_cv_prog_CXXCPP="$CXXCPP"
+     if test -z "$LD"; then LD=link; fi
+     if test -z "$AS"; then AS=ml; fi
+     if test -z "$MIDL"; then MIDL=midl; fi
+@@ -1975,7 +1975,7 @@
+         DYNAMIC_XPCOM_LIBS='-L$(LIBXUL_DIST)/lib -lxpcom -lxpcom_core'
+         XPCOM_FROZEN_LDOPTS='-L$(LIBXUL_DIST)/lib -lxpcom'
+         DLL_PREFIX=
+-        IMPORT_LIB_SUFFIX=dll.a
++        IMPORT_LIB_SUFFIX=a
+     else
+         TARGET_COMPILER_ABI=msvc
+         HOST_CC='$(CC)'
+--- a/security/manager/Makefile.in
++++ b/security/manager/Makefile.in
+@@ -163,6 +163,8 @@
+ DEFAULT_GMAKE_FLAGS += MOZILLA_CLIENT=1
+ DEFAULT_GMAKE_FLAGS += NO_MDUPDATE=1
+ DEFAULT_GMAKE_FLAGS += NSS_ENABLE_ECC=1
++# Pass theIMPORT_LIB_SUFFIX into the sub makefiles
++DEFAULT_GMAKE_FLAGS += IMPORT_LIB_SUFFIX=.$(IMPORT_LIB_SUFFIX)
+ ABS_topsrcdir   := $(shell cd $(topsrcdir); pwd)
+ ifneq ($(ABS_topsrcdir),$(MOZ_BUILD_ROOT))
+ DEFAULT_GMAKE_FLAGS += BUILD_TREE=$(MOZ_BUILD_ROOT)
+--- a/security/nss/lib/ckfw/capi/Makefile
++++ b/security/nss/lib/ckfw/capi/Makefile
+@@ -54,6 +54,9 @@
+ 	-lplc4 \
+ 	-lplds4 \
+ 	-lnspr4 \
++        -lcrypt32 \
++        -ladvapi32 \
++        -lrpcrt4 \
+ 	$(NULL)
+ else 
+ EXTRA_SHARED_LIBS += \
+--- a/security/nss/lib/ckfw/capi/cobject.c
++++ b/security/nss/lib/ckfw/capi/cobject.c
+@@ -172,7 +172,7 @@
+       len = (len << 8) | (unsigned) *src++;
+     }
+   }
+-  if (len + (src-start) > (unsigned int)size) {
++  if (len + ((unsigned char*)src-start) > (unsigned int)size) {
+     return start;
+   }
+   if (next) {
+--- a/xpcom/base/nscore.h
++++ b/xpcom/base/nscore.h
+@@ -167,6 +167,22 @@
+ #endif
+ 
+ #ifdef NS_WIN32
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) && defined(__GNUC__)
++
++#define NS_IMPORT __declspec(dllimport)
++#define NS_IMPORT_(type) __declspec(dllimport) type
++#define NS_EXPORT __declspec(dllexport)
++#define NS_EXPORT_(type) __declspec(dllexport) type
++#define NS_IMETHOD_(type) virtual type
++#define NS_IMETHODIMP_(type) type
++#define NS_METHOD_(type) type
++#define NS_CALLBACK_(_type, _name) _type (* _name)
++#define NS_STDCALL
++#define NS_FROZENCALL __cdecl
++#define NS_EXPORT_STATIC_MEMBER_(type) type
++#define NS_IMPORT_STATIC_MEMBER_(type) type
++
++#else
+ 
+ #define NS_IMPORT __declspec(dllimport)
+ #define NS_IMPORT_(type) __declspec(dllimport) type __stdcall
+@@ -186,6 +202,8 @@
+ 
+ #define NS_EXPORT_STATIC_MEMBER_(type) type
+ #define NS_IMPORT_STATIC_MEMBER_(type) type
++
++#endif
+ 
+ #elif defined(XP_OS2) && defined(__declspec)
+ 
+@@ -238,13 +256,8 @@
+  *  when http://gcc.gnu.org/bugzilla/show_bug.cgi?id=11893 is fixed.
+  */
+ 
+-#ifdef __GNUC__
+-#define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+-  typeof(&class::func) name
+-#else
+ #define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+   ret (NS_STDCALL class::*name) args
+-#endif
+ 
+ /**
+  * Deprecated declarations.
+--- a/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
++++ b/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
+@@ -44,9 +44,15 @@
+ #error "This code is for Win32 only"
+ #endif
+ 
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) && defined(__GNUC__)
++#define STDCALL
++#else
++#define STDCALL __stdcall
++#endif
++
+ extern "C" {
+ 
+-static nsresult __stdcall
++static nsresult STDCALL
+ PrepareAndDispatch(nsXPTCStubBase* self, PRUint32 methodIndex,
+                    PRUint32* args, PRUint32* stackBytesToPop)
+ {
+@@ -157,7 +163,7 @@
+ #else
+ 
+ #define STUB_ENTRY(n) \
+-nsresult __stdcall nsXPTCStubBase::Stub##n() \
++nsresult STDCALL nsXPTCStubBase::Stub##n() \
+ { \
+   PRUint32 *args, stackBytesToPop = 0; \
+   nsresult result = 0; \
+@@ -174,7 +180,7 @@
+ #endif /* __GNUC__ */
+ 
+ #define SENTINEL_ENTRY(n) \
+-nsresult __stdcall nsXPTCStubBase::Sentinel##n() \
++nsresult STDCALL nsXPTCStubBase::Sentinel##n() \
+ { \
+     NS_ASSERTION(0,"nsXPTCStubBase::Sentinel called"); \
+     return NS_ERROR_NOT_IMPLEMENTED; \
+--- a/js/src/jsnum.cpp
++++ b/js/src/jsnum.cpp
+@@ -650,7 +650,11 @@
+  * to 53 bit mantissa.
+  * On Alpha platform this is handled via Compiler option.
+  */
+-#define FIX_FPU() _control87(MCW_EM | PC_53, MCW_EM | MCW_PC)
++#if !defined __MINGW32__
++  #define FIX_FPU() _control87(MCW_EM | PC_53, MCW_EM | MCW_PC)
++#else
++  #define FIX_FPU() _control87(_MCW_EM | _PC_53, _MCW_EM | _MCW_PC)
++#endif
+ 
+ #else
+ 
+--- a/js/src/jstracer.cpp
++++ b/js/src/jstracer.cpp
+@@ -47,6 +47,15 @@
+ #include <malloc.h>
+ #define alloca _alloca
+ #endif
++
++//MinGW
++#ifdef __GNUC__
++#ifndef HAVE_ALLOCA_H
++#include <malloc.h>
++#define alloca _alloca
++#endif
++#endif
++
+ #ifdef SOLARIS
+ #include <alloca.h>
+ #endif
+--- a/js/src/nanojit/Nativei386.cpp
++++ b/js/src/nanojit/Nativei386.cpp
+@@ -366,7 +366,7 @@
+ 	{
+ 		Register r;
+ 		RegAlloc &regs = _allocator;
+-	#ifdef WIN32
++	#if (defined WIN32) && (!defined __MINGW32__)
+ 		_asm
+ 		{
+ 			mov ecx, regs
+--- a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
++++ b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
+@@ -58,6 +58,8 @@
+ #include "png.h"
+ 
+ #include "gfxPlatform.h"
++
++#include <limits.h>
+ 
+ static void PNGAPI info_callback(png_structp png_ptr, png_infop info_ptr);
+ static void PNGAPI row_callback(png_structp png_ptr, png_bytep new_row,
+--- a/js/src/xpconnect/src/xpcquickstubs.cpp
++++ b/js/src/xpconnect/src/xpcquickstubs.cpp
+@@ -376,8 +376,8 @@
+     }
+ 
+     len = JS_GetStringLength(s);
+-    chars = (len == 0 ? traits::sEmptyBuffer : JS_GetStringChars(s));
+-    new(mBuf) implementation_type(chars, len);
++    chars = (len == 0 ?  reinterpret_cast<const jschar*>(traits::sEmptyBuffer) : reinterpret_cast<const jschar*>(JS_GetStringChars(s)));
++    new(mBuf) implementation_type(reinterpret_cast<const PRUnichar*>(chars), static_cast<PRUint32>(len));
+     mValid = JS_TRUE;
+ }
+ 
+@@ -415,8 +415,8 @@
+     }
+ 
+     len = JS_GetStringLength(s);
+-    chars = (len == 0 ? traits::sEmptyBuffer : JS_GetStringChars(s));
+-    new(mBuf) implementation_type(chars, len);
++    chars = (len == 0 ?  reinterpret_cast<const jschar*>(traits::sEmptyBuffer) : reinterpret_cast<const jschar*>(JS_GetStringChars(s)));
++    new(mBuf) implementation_type(reinterpret_cast<const PRUnichar*>(chars), static_cast<PRUint32>(len));
+     mValid = JS_TRUE;
+ }
+ 
+@@ -720,7 +720,7 @@
+         *pval = STRING_TO_JSVAL(str);  // Root the new string.
+     }
+ 
+-    *pstr = JS_GetStringChars(str);
++    *pstr = reinterpret_cast<PRUnichar*>(JS_GetStringChars(str));
+     return JS_TRUE;
+ }
+ 
