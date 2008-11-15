@@ -5,6 +5,7 @@
  * 新增 Patch檔 版本需求至 README.txt
  * 修正了許多 bug
  * 新增歡迎詞至 start-msys.bat.in
+ * 更改 Setup.bat 的顯示介面，加入歡迎詞
 
 --- 2008-11-14 Jay Wang stu90206@gmail.com
  * 更新 binutils 至 2.19 RC1

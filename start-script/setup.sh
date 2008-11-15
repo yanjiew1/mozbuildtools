@@ -12,7 +12,7 @@ mkdir /download 2> nul
 cd /download
 echo 下載 GCC ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.2.4-tdm-1-core.zip' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-core-4.2.1-sjlj-2.tar.gz' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh
@@ -28,7 +28,7 @@ if [ -f fail ] ; then
 fi
 echo 下載 G++ ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.2.4-tdm-1-g++.zip' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-g++-4.2.1-sjlj-2.tar.gz' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh
@@ -125,6 +125,19 @@ for E in `ls /download/*.zip`
 do
 	unzip -o $E > nul
 done
+for E in `ls /download/*.7z`
+do
+	7z x -y $E > nul
+done
+cd bin
+cp gcc-sjlj.exe gcc.exe
+cp g++-sjlj.exe g++.exe
+cp cpp-sjlj.exe cpp.exe
+cp c++-sjlj.exe c++.exe
+cp mingw32-c++-sjlj.exe mingw32-c++.exe
+cp mingw32-g++-sjlj.exe mingw32-g++.exe
+cp mingw32-gcc-4.2.1-sjlj.exe mingw32-gcc-4.2.1.exe
+cp mingw32-gcc-sjlj.exe mingw32-gcc.exe
 echo 取得 buildtools ...
 cd /download
 cvs -d :pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot co buildtools
@@ -143,5 +156,4 @@ cd lib
 #rm -f libgdi32.a
 #cp ../../w32api_fix/libcrypt32.a .
 #cp ../../w32api_fix/libgdi32.a .
-echo '請按下 Enter 鍵繼續'
-read
+
