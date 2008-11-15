@@ -12,7 +12,7 @@ mkdir /download 2> nul
 cd /download
 echo ¤U¸ü GCC ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-1-core.zip' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.2.4-tdm-1-core.zip' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh
@@ -28,7 +28,7 @@ if [ -f fail ] ; then
 fi
 echo ¤U¸ü G++ ...
 echo '#!/bin/bash' > down.sh
-echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-1-g++.zip' >> down.sh
+echo 'wget http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.2.4-tdm-1-g++.zip' >> down.sh
 echo 'if [ "$?" != "0" ] ; then' >> down.sh
 echo 'echo fail > fail' >> down.sh
 echo 'fi' >> down.sh

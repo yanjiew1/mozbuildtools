@@ -1,4 +1,8 @@
-﻿--- 2008-11-14 Jay Wang stu90206@gmail.com
+﻿--- 2008-11-15 Jay Wang stu90206@gmail.com
+ * 降級 GCC 至 4.2.4
+  - 註: 經過測試 GCC 4.3.2 還是無法在某些最佳化參數編譯之下執行，因此降為 4.2.4 ，待新版 GCC 出現再進行測試
+
+--- 2008-11-14 Jay Wang stu90206@gmail.com
  * 更新 binutils 至 2.19 RC1
  * 修改 README 的檔名，改為 README.txt
  * 修改 changelog 的檔名，改為 changelog
