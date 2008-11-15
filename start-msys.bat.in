@@ -4,4 +4,4 @@ set CVSROOT=:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
 set HOME=%ROOT%
 cd msys
 # bin\rxvt -e bash --login -i
-msys
+bin\bash --login -i
