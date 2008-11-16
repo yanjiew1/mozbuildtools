@@ -8,6 +8,7 @@
  * 更改 Setup.bat 的顯示介面，加入歡迎詞
  * 刪除了 start-script/setup.sh
  * 新增 starta-script/get.bat
+ * 新增 License.txt
 
 --- 2008-11-14 Jay Wang stu90206@gmail.com
  * 更新 binutils 至 2.19 RC1

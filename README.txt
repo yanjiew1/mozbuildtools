@@ -50,6 +50,7 @@ http://sites.google.com/site/usemingwtobuildfirefox/Home/patch-dang-an-gui
 
 ＊ 授權協議參閱，請至
 http://sites.google.com/site/usemingwtobuildfirefox/Home/shou-quan-xie-yi
+本程式除了第三方程式以外，其餘以 BSD 許可證 為授權協議
 
 建議 .mozconfig
 -------------------

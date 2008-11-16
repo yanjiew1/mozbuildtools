@@ -14,6 +14,7 @@
 #
 #
 # 注意事項: 使用完成 Patch 後，請記得將 nsprpub 內的 configure 重新產生一次
+#
 --- a/nsprpub/configure.in
 +++ b/nsprpub/configure.in
 @@ -723,6 +723,10 @@
@@ -35,7 +36,7 @@
  	$(RM) -rf _tests
 +ifeq ($(OS_ARCH),WINNT)
 +	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin ; echo
-+	cp ${MOZ_TOOLS}/bin/*.dll $(DIST)/bin
++	for files in `find -name "${MOZ_TOOLS}/bin" -name '*.dll'` ; do cp $file $(DIST)/bin ; done ;
 +endif
  
  TIERS += base
