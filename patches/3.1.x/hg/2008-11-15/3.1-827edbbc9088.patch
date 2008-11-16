@@ -29,10 +29,10 @@
      OS_TARGET=OS2
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -53,3 +53,7
+@@ -53,3 +53,7 @@
  	$(RM) -rf _tests
 +ifeq ($(OS_ARCH),WINNT)
-+	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin
++	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin ; echo
 +	cp ${MOZ_TOOLS}/bin/*.dll $(DIST)/bin
 +endif
  
