@@ -1,0 +1,9 @@
+﻿
+--- 2008-11-16 Jay Wang stu90206@gmail.com
+ * 將 Patch 更細緻的分類
+ * 修改 Changelog 至 Changelog.txt
+ * 每個 patch 檔新增 授權協議
+
+--- 2008-11-15 Jay Wang stu90206@gmail.com
+ * 新增 3.1-827edbbc9088.patch 版本號 0.3
+ * 0.3 版增加了 Makefile.in 及 nspr 的相關 Patch

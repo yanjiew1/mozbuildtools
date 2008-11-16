@@ -10,6 +10,8 @@
 #
 # 比較上一個版本，這個版本新增了 config/config.mk 的 patch
 #
+# 授權協議: BSD 許可證
+#
 # Patch: Version 0.2
 --- a/config/config.mk
 +++ b/config/config.mk

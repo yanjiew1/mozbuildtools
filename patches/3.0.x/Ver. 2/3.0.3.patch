@@ -8,6 +8,8 @@
 #
 # 如有意見，請寄送 E-mail 至 stu90206@gmail.com 或加入線上論壇留言
 #
+# 授權協議: BSD 許可證
+#
 # Patch: Version 0.2
 --- a/config/config.mk	2008-08-14 18:00:34 +0800
 +++ b/config/config.mk	2008-09-28 16:16:35 +0800
