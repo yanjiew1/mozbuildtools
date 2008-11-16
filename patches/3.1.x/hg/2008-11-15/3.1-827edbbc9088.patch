@@ -121,7 +121,7 @@
  #endif
  
  #ifdef NS_WIN32
-+#if defined(MOZ_DISABLE_XPCOM_STDCALL) && defined(__GNUC__)
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) || defined(__GNUC__) 
 +
 +#define NS_IMPORT __declspec(dllimport)
 +#define NS_IMPORT_(type) __declspec(dllimport) type

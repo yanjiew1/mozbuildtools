@@ -73,10 +73,10 @@ ac_add_options  --enable-strip
 CFLAGS="-w"
 CXXFLAGS="-w"
 CPPFLAGS="-w"
-CC="gcc -DMOZ_DISABLE_XPCOM_STDCALL"
-CXX="g++ -DMOZ_DISABLE_XPCOM_STDCALL"
-CPP="cpp -DMOZ_DISABLE_XPCOM_STDCALL"
-CXXCPP="cpp -DMOZ_DISABLE_XPCOM_STDCALL"
+CC="gcc"
+CXX="g++"
+CPP="cpp"
+CXXCPP="cpp"
 AS=as
 LD=ld
 AR=ar
