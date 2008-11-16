@@ -29,7 +29,9 @@
      OS_TARGET=OS2
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -53,3 +53,7 @@
+@@ -51,6 +51,10 @@
+ 	$(RM) -rf $(DIST)/public
+ 	$(RM) -rf $(DIST)/bin/components
  	$(RM) -rf _tests
 +ifeq ($(OS_ARCH),WINNT)
 +	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin ; echo
@@ -37,6 +39,7 @@
 +endif
  
  TIERS += base
+ 
 --- a/config/config.mk
 +++ b/config/config.mk
 @@ -373,8 +373,10 @@
@@ -169,7 +172,7 @@
  #error "This code is for Win32 only"
  #endif
  
-+#if defined(MOZ_DISABLE_XPCOM_STDCALL) && defined(__GNUC__)
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) || defined(__GNUC__)
 +#define STDCALL
 +#else
 +#define STDCALL __stdcall
