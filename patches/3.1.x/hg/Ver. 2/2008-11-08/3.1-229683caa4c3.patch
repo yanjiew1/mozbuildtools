@@ -1,18 +1,8 @@
 #
-#
-# 最後更新日期: 2008/11/08
-# 此 patch 由 Jay Wang 製作
-# 此檔部份來自 https://bugzilla.mozilla.org/show_bug.cgi?id=449557
-#
-# 經過測試，可以在 229683caa4c3 (2008-11-09) 版本使用
-#
-# 如有意見，請寄送 E-mail 至 stu90206@gmail.com 或加入線上論壇留言
-#
-# 比較上一個版本，這個版本新增了 config/config.mk 的 patch
-#
-# 授權協議: BSD 許可證
+# This file has no copyright assigned and is placed in the Public Domain.
 #
 # Patch: Version 0.2
+#
 --- a/config/config.mk
 +++ b/config/config.mk
 @@ -373,8 +373,10 @@

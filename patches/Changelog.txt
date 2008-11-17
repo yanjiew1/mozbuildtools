@@ -1,4 +1,6 @@
-﻿
+﻿--- 2008-11-17 Jay Wang stu90206@gmail.com
+ * 改變授權模式為公有領域
+
 --- 2008-11-16 Jay Wang stu90206@gmail.com
  * 將 Patch 更細緻的分類
  * 修改 Changelog 至 Changelog.txt

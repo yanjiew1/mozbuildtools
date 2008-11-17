@@ -1,20 +1,7 @@
 #
-#
-# 最後更新日期: 2008/11/08
-# 此 patch 由 Jay Wang 製作
-# 此檔部份來自 https://bugzilla.mozilla.org/show_bug.cgi?id=449557
-#
-# 經過測試，可以在 827edbbc9088 (2008-11-15) 版本使用
-#
-# 如有意見，請寄送 E-mail 至 stu90206@gmail.com 或加入線上論壇留言
-#
-# 比較上一個版本，這個版本新增了 config/config.mk 的 patch
+# This file has no copyright assigned and is placed in the Public Domain.
 #
 # Patch: Version 0.3
-#
-# 授權協議: BSD 許可證
-#
-# 注意事項: 使用完成 Patch 後，請記得將 nsprpub 內的 configure 重新產生一次
 #
 --- a/nsprpub/configure.in
 +++ b/nsprpub/configure.in

@@ -1,16 +1,8 @@
 #
-#
-# 最後更新日期: 2008/11/08
-# 此 patch 由 Jay Wang 製作
-# 此檔部份來自 https://bugzilla.mozilla.org/show_bug.cgi?id=449557
-#
-# 經過測試，可以在 c44cafd3d7c8 (2008-11-08) 版本使用
-#
-# 如有意見
-#
-# 授權協議: BSD 許可證
+# This file has no copyright assigned and is placed in the Public Domain.
 #
 # Patch: Version 0.1
+#
 --- a/configure.in	2008-10-04 00:36:28 +0800
 +++ b/configure.in	2008-10-04 21:10:03 +0800
 @@ -191,7 +191,7 @@
