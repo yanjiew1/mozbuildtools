@@ -1,4 +1,7 @@
-﻿--- 2008-11-15 Jay Wang stu90206@gmail.com
+﻿--- 2008-11-23 Jay Wang stu90206@gmail.com
+ * 暫時升級 GCC 至 4.4-20081123 (測試用)
+
+--- 2008-11-15 Jay Wang stu90206@gmail.com
  * 降級 GCC 至 4.2.1
   - 註: 經過測試 GCC 4.3.2 還是無法在某些最佳化參數編譯之下執行，因此降為 4.2.1 ，待新版 GCC 出現再進行測試
  * 從 rxvt 改由 cmd 執行 bash

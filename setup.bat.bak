@@ -74,7 +74,9 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/au
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-bin.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-dll.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/regex-0.12-MSYS-1.0.11-1.tar.bz2 regex-0.12-MSYS-1.0.11-1.tar.bz2
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-core-4.2.1-sjlj-2.tar.gz gcc-core-4.2.1-sjlj-2.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.1-mingw32-dev.tar.gz mingwrt-3.15.1-mingw32-dev.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-g++-4.2.1-sjlj-2.tar.gz gcc-g++-4.2.1-sjlj-2.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/w32api-3.12-mingw32-dev.tar.gz w32api-3.12-mingw32-dev.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-rc1-bin.tar.gz binutils-2.19-mingw32-rc1-bin.tar.gz
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip pkg-config-0.23-2.zip
@@ -84,7 +86,6 @@ call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.
 call ..\start-script\get.bat http://jaist.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
 call ..\start-script\get.bat http://www.python.org/ftp/python/2.6/python-2.6.msi python-2.6.msi
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-core-cxx-4.4-20081123.7z gcc-core-cxx-4.4-20081123.7z
 cls
 echo  Mozbuildtools Version: %VERSION%
 echo ________________________________________________________________________________
@@ -122,9 +123,20 @@ cd mingw
 move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-rc1-bin.tar
 move ..\download\w32api-3.12-mingw32-dev.tar w32api-3.12-mingw32-dev.tar
 move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar
+move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
+move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
 
 ..\tools\7za x -y *.tar > nul 2> nul
-..\tools\7za x -y ..\download\gcc-core-cxx-4.4-20081123.7z > nul 2> nul
+cd bin
+move gcc-sjlj.exe gcc.exe > nul 2> nul
+move g++-sjlj.exe g++.exe > nul 2> nul
+move cpp-sjlj.exe cpp.exe > nul 2> nul 
+move c++-sjlj.exe c++.exe > nul 2> nul
+move mingw32-c++-sjlj.exe mingw32-c++.exe > nul 2> nul
+move mingw32-g++-sjlj.exe mingw32-g++.exe > nul 2> nul
+move mingw32-gcc-4.2.1-sjlj.exe mingw32-gcc-4.2.1.exe > nul 2> nul
+move mingw32-gcc-sjlj.exe mingw32-gcc.exe > nul 2> nul
+cd ..
 cd ..
 
 echo         正在設定 NSIS...
