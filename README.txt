@@ -4,14 +4,8 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
 ＊ 版本說明: 
-  - 版本: 0.3b1
-  - 新增 NSIS 2.22 
-  - 新增 UPX 3.0.3 (已附加)
-  - 更新 binutils 至 2.19 RC1
-  - 更新 GCC 至 4.2.1
-  - 刪除 NSPR 資料夾
-  - 將部份工具程式使用 UPX 來壓縮
-  - 介面大翻修
+  - 版本: 0.3b2
+  - 支援 Vista 系統
 
 ＊ Patch 檔版本需求: 0.3 以上
   - 請特別注意 patch 檔的開頭是否有標示 0.3 。

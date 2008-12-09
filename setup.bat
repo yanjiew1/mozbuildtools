@@ -1,5 +1,5 @@
 @echo off
-set VERSION=0.3b1
+set VERSION=0.3b2
 rem Copyright (c) 2008, Jay Wang
 rem All rights reserved.
 rem 
@@ -46,7 +46,7 @@ rmdir /S /Q msys > nul 2> nul
 rmdir /S /Q MinGW > nul 2> nul
 rmdir /S /Q Mercurial > nul 2> nul
 rmdir /S /Q moztools > nul 2> nul
-rmdir /S /Q python26 > nul 2> nul
+rmdir /S /Q python25 > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
 del start-msys.bat > nul 2> nul
 del install-python.bat > nul 2> nul
@@ -97,6 +97,29 @@ cd ..
 cls
 echo  Mozbuildtools Version: %VERSION%
 echo ________________________________________________________________________________
+
+echo         正在設定 MinGW...
+mkdir mingw > nul 2> nul
+cd mingw
+move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
+move ..\download\w32api-3.12-mingw32-dev.tar w32api-3.12-mingw32-dev.tar > nul 2> nul
+move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
+move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
+move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
+
+..\tools\7za x -y *.tar > nul 2> nul
+cd bin
+move gcc-sjlj.exe gcc.exe > nul 2> nul
+move g++-sjlj.exe g++.exe > nul 2> nul
+move cpp-sjlj.exe cpp.exe > nul 2> nul 
+move c++-sjlj.exe c++.exe > nul 2> nul
+move mingw32-c++-sjlj.exe mingw32-c++.exe > nul 2> nul
+move mingw32-g++-sjlj.exe mingw32-g++.exe > nul 2> nul
+move mingw32-gcc-4.2.1-sjlj.exe mingw32-gcc-4.2.1.exe > nul 2> nul
+move mingw32-gcc-sjlj.exe mingw32-gcc.exe > nul 2> nul
+cd ..
+cd ..
+
 echo         正在設定 Moztools...
 move download\wintools.zip wintools.zip > nul 2> nul
 tools\7za x wintools.zip > nul 2> nul
@@ -116,28 +139,9 @@ cd ..
 mkdir lib > nul 2> nul
 copy ..\buildtools\windows\lib\*.lib lib > nul 2> nul
 cd ..
-
-echo         正在設定 MinGW...
-mkdir mingw > nul 2> nul
-cd mingw
-move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-rc1-bin.tar
-move ..\download\w32api-3.12-mingw32-dev.tar w32api-3.12-mingw32-dev.tar
-move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar
-move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
-move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
-
-..\tools\7za x -y *.tar > nul 2> nul
-cd bin
-move gcc-sjlj.exe gcc.exe > nul 2> nul
-move g++-sjlj.exe g++.exe > nul 2> nul
-move cpp-sjlj.exe cpp.exe > nul 2> nul 
-move c++-sjlj.exe c++.exe > nul 2> nul
-move mingw32-c++-sjlj.exe mingw32-c++.exe > nul 2> nul
-move mingw32-g++-sjlj.exe mingw32-g++.exe > nul 2> nul
-move mingw32-gcc-4.2.1-sjlj.exe mingw32-gcc-4.2.1.exe > nul 2> nul
-move mingw32-gcc-sjlj.exe mingw32-gcc.exe > nul 2> nul
-cd ..
-cd ..
+move moztools\bin\nsinstall.exe moztools\bin\nsinstall.exe.orig
+tools\delta -d -s moztools\bin\nsinstall.exe.orig start-script\nsinstall.xdelta moztools\bin\nsinstall.exe
+del moztools\bin\nsinstall.exe.orig
 
 echo         正在設定 NSIS...
 move download\nsis-2.22.zip nsis-2.22.zip > nul 2> nul
@@ -164,7 +168,7 @@ copy tools\zip.exe msys\bin > nul 2> nul
 copy tools\unzip.exe msys\bin > nul 2> nul
 mkdir msys\etc\profile.d > nul 2> nul
 xcopy /E /Y msys\usr\local msys > nul 2> nul
-msys\bin\rxvt -e msys/bin/bash start-script/set_root.sh
+msys/bin/bash start-script/set_root.sh
 cd mingw
 move binutils-2.19-bin.tar ..\download\binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
 move w32api-3.12-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
@@ -172,7 +176,7 @@ move mingwrt-3.15.1-mingw32-dev.tar ..\download\mingwrt-3.15.1-mingw32-dev.tar >
 move gcc-g++-4.2.1-sjlj-2.tar ..\download\gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
 move gcc-core-4.2.1-sjlj-2.tar ..\download\gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
 cd ..
-move wintools.zip download\wintools.zip > nul 2> nul
+
 move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
 
 echo         設定 python2.5.2 ...
@@ -182,6 +186,8 @@ echo Y | del /S install-python.bat > nul 2> nul
 echo         刪除最後的暫存檔 ...
 rmdir /S /Q download > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
+
+move wintools.zip download\wintools.zip > nul 2> nul
 
 cls
 echo  Mozbuildtools Version: %VERSION%

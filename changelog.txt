@@ -1,4 +1,8 @@
-﻿--- 2008-12-05 Jay Wang stu90206@gmail.com
+﻿--- 2008-12-09 Jay Wang stu90206@gmail.com
+ * 新增 Vista 支援
+ * 修改版本號至 0.3b2
+
+--- 2008-12-05 Jay Wang stu90206@gmail.com
  * 降級 GCC 至 4.2.1
  * 降級 Python 至 2.5.2
 
