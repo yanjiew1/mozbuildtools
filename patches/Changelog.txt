@@ -2,6 +2,7 @@
  * 稍微整理了 Patch 檔案的目錄結構
  * 修正了些 Patch
  * 新增 3.2.x 的 Patch
+ * 修正 Ver. 0.3 Patch 之錯誤
 
 --- 2008-11-17 Jay Wang stu90206@gmail.com
  * 改變授權模式為公有領域
