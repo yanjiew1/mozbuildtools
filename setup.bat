@@ -163,7 +163,7 @@ cd ..
 xcopy /E /Y /Q msys\usr msys > nul 2> nul
 copy tools\wget.exe msys\bin > nul 2> nul
 copy tools\7za.exe msys\bin > nul 2> nul
-copy tools\7z.exe msys\bin > nul 2> nul
+copy tools\7za.exe msys\bin\7z.exe > nul 2> nul
 copy tools\zip.exe msys\bin > nul 2> nul
 copy tools\unzip.exe msys\bin > nul 2> nul
 mkdir msys\etc\profile.d > nul 2> nul

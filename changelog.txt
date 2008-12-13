@@ -1,7 +1,10 @@
-﻿--- 2008-12-09 Jay Wang stu90206@gmail.com
+﻿--- 2008-12-13 Jay Wang stu90206@gmail.com
+ * 新增壓縮執行檔支援
+ * 0.3b2 釋出
+
+--- 2008-12-09 Jay Wang stu90206@gmail.com
  * 新增 Vista 支援
  * 修改版本號至 0.3b2
- * 新增壓縮執行檔支援
 
 --- 2008-12-05 Jay Wang stu90206@gmail.com
  * 降級 GCC 至 4.2.1
