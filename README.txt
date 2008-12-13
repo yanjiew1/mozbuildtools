@@ -35,6 +35,7 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
   - 刪除 python-2.6.msi 安裝檔
   - 刪除 install-python.bat
   - 刪除 msys/download 目錄
+  - 執行 compress.bat 以壓縮 dll 及 exe 檔
 
 ＊ 如需下載 Firefox 3.1 最新的原始碼，請至
 http://hg.mozilla.org/mozilla-central/summary
