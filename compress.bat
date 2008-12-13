@@ -1,0 +1,1 @@
+msys\bin\bash start-script/compress.sh
