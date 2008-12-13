@@ -1,4 +1,8 @@
-﻿--- 2008-11-17 Jay Wang stu90206@gmail.com
+﻿--- 2008-12-13 Jay Wang stu90206@gmail.com
+ * 稍微整理了 Patch 檔案的目錄結構
+ * 修正了些 Patch
+
+--- 2008-11-17 Jay Wang stu90206@gmail.com
  * 改變授權模式為公有領域
 
 --- 2008-11-16 Jay Wang stu90206@gmail.com

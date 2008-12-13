@@ -24,7 +24,7 @@
  	$(RM) -rf _tests
 +ifeq ($(OS_ARCH),WINNT)
 +	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin ; echo
-+	for files in `find -name "${MOZ_TOOLS}/bin" -name '*.dll'` ; do cp $file $(DIST)/bin ; done ;
++	for files in `find "${MOZ_TOOLS}/bin" -name '*.dll'` ; do cp $$files $(DIST)/bin ; done ;
 +endif
  
  TIERS += base
