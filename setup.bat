@@ -1,6 +1,6 @@
 @echo off
-set VERSION=0.3b2
-rem Copyright (c) 2008, Jay Wang
+set VERSION=0.3b3
+rem Copyright (c) 2008 ~ 2009, Jay Wang
 rem All rights reserved.
 rem 
 rem Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -183,11 +183,12 @@ echo         正在設定 python2.5.4 ...
 call install-python.bat
 echo Y | del /S install-python.bat > nul 2> nul
 
+move wintools.zip download\wintools.zip > nul 2> nul
+
 echo         刪除最後的暫存檔 ...
 rmdir /S /Q download > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
 
-move wintools.zip download\wintools.zip > nul 2> nul
 
 cls
 echo  Mozbuildtools Version: %VERSION%
