@@ -17,4 +17,4 @@ echo "set ROOT=`pwd -W`" >> start-msys.bat
 cat start-msys.bat.in >> start-msys.bat
 tools/todos.exe start-msys.bat
 pwd -W | sed -n 's/\//\\/gp' > /winpwd
-echo 'msiexec /a download\\python-2.5.2.msi /qb TARGETDIR="'`cat /winpwd`\\python25'"' > install-python.bat
+echo 'msiexec /a download\\python-2.5.4.msi /qb TARGETDIR="'`cat /winpwd`\\python25'"' > install-python.bat

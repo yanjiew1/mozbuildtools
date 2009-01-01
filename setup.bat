@@ -77,14 +77,14 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/re
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-core-4.2.1-sjlj-2.tar.gz gcc-core-4.2.1-sjlj-2.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.1-mingw32-dev.tar.gz mingwrt-3.15.1-mingw32-dev.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-g++-4.2.1-sjlj-2.tar.gz gcc-g++-4.2.1-sjlj-2.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/w32api-3.12-mingw32-dev.tar.gz w32api-3.12-mingw32-dev.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-rc1-bin.tar.gz binutils-2.19-mingw32-rc1-bin.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/w32api-3.13-mingw32-dev.tar.gz w32api-3.13-mingw32-dev.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-bin.tar.gz binutils-2.19-mingw32-bin.tar.gz
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip pkg-config-0.23-2.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip gettext-runtime-0.17-1.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.18/glib_2.18.2-1_win32.zip glib_2.18.2-1_win32.zip
 call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.0.2.exe Mercurial-1.0.2.exe
-call ..\start-script\get.bat http://jaist.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
-call ..\start-script\get.bat http://www.python.org/ftp/python/2.5.2/python-2.5.2.msi python-2.5.2.msi
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
+call ..\start-script\get.bat http://www.python.org/ftp/python/2.5.2/python-2.5.4.msi python-2.5.4.msi
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
 cls
 echo  Mozbuildtools Version: %VERSION%
@@ -101,8 +101,8 @@ echo ___________________________________________________________________________
 echo         正在設定 MinGW...
 mkdir mingw > nul 2> nul
 cd mingw
-move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
-move ..\download\w32api-3.12-mingw32-dev.tar w32api-3.12-mingw32-dev.tar > nul 2> nul
+move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-bin.tar > nul 2> nul
+move ..\download\w32api-3.13-mingw32-dev.tar w32api-3.13-mingw32-dev.tar > nul 2> nul
 move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
 move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
 move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
@@ -139,9 +139,9 @@ cd ..
 mkdir lib > nul 2> nul
 copy ..\buildtools\windows\lib\*.lib lib > nul 2> nul
 cd ..
-move moztools\bin\nsinstall.exe moztools\bin\nsinstall.exe.orig
-tools\delta -d -s moztools\bin\nsinstall.exe.orig start-script\nsinstall.xdelta moztools\bin\nsinstall.exe
-del moztools\bin\nsinstall.exe.orig
+move moztools\bin\nsinstall.exe moztools\bin\nsinstall.exe.orig > nul 2> nul
+tools\xdelta -d -s moztools\bin\nsinstall.exe.orig start-script\nsinstall.xdelta moztools\bin\nsinstall.exe > nul 2> nul
+del moztools\bin\nsinstall.exe.orig > nul 2> nul
 
 echo         正在設定 NSIS...
 move download\nsis-2.22.zip nsis-2.22.zip > nul 2> nul
@@ -168,7 +168,7 @@ copy tools\zip.exe msys\bin > nul 2> nul
 copy tools\unzip.exe msys\bin > nul 2> nul
 mkdir msys\etc\profile.d > nul 2> nul
 xcopy /E /Y msys\usr\local msys > nul 2> nul
-msys/bin/bash start-script/set_root.sh
+msys\bin\bash start-script/set_root.sh
 cd mingw
 move binutils-2.19-bin.tar ..\download\binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
 move w32api-3.12-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
@@ -179,7 +179,7 @@ cd ..
 
 move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
 
-echo         設定 python2.5.2 ...
+echo         正在設定 python2.5.4 ...
 call install-python.bat
 echo Y | del /S install-python.bat > nul 2> nul
 
