@@ -3,6 +3,8 @@
  * 更新 Python 至 2.5.4
  * 更新 w32api 至 3.13
  * 更新 binutils 至 2.19
+ * Python 下載地點改由我在 Google Code 製作的 mirror
+ * 0.3b3 釋出
 
 --- 2008-12-13 Jay Wang stu90206@gmail.com
  * 新增壓縮執行檔支援

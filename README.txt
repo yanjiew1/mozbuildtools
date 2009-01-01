@@ -4,8 +4,12 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
 ＊ 版本說明: 
-  - 版本: 0.3b2
-  - 支援 Vista 系統
+  - 版本: 0.3b3
+  - tools 改由網路下載
+  - 修正 Setup 錯誤
+  - 更新 Python 至 2.5.4
+  - 更新 w32api 至 3.13
+  - 更新 binutils 至 2.19
 
 ＊ Patch 檔版本需求: 0.3 以上
   - 請特別注意 patch 檔的開頭是否有標示 0.3 。
@@ -31,13 +35,9 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
   - 編譯好執行的檔案後，記得將 NSPR、moztools 的 DLL 檔跟 Firefox 放在一起才能運作。
 
 ＊ 安裝好後空間清理:
-  - 刪除 download 目錄
-  - 刪除 python-2.6.msi 安裝檔
-  - 刪除 install-python.bat
-  - 刪除 msys/download 目錄
   - 執行 compress.bat 以壓縮 dll 及 exe 檔
 
-＊ 如需下載 Firefox 3.1 最新的原始碼，請至
+＊ 如需下載 Firefox 3.2 最新的原始碼，請至
 http://hg.mozilla.org/mozilla-central/summary
 
 ＊ 如需下載最新 Patch ，請至

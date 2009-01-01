@@ -50,6 +50,13 @@ rmdir /S /Q python25 > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
 del start-msys.bat > nul 2> nul
 del install-python.bat > nul 2> nul
+del tools\fromdos.exe > nul 2> nul
+del tools\innounp.exe > nul 2> nul
+del tools\todos.exe > nul 2> nul
+del tools\unzip.exe > nul 2> nul
+del tools\upx.exe > nul 2> nul
+del tools\xdelta.exe > nul 2> nul
+del tools\zip.exe > nul 2> nul
 mkdir download > nul 2> nul
 
 cd download
@@ -84,8 +91,10 @@ call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/depen
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.18/glib_2.18.2-1_win32.zip glib_2.18.2-1_win32.zip
 call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.0.2.exe Mercurial-1.0.2.exe
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
-call ..\start-script\get.bat http://www.python.org/ftp/python/2.5.2/python-2.5.4.msi python-2.5.4.msi
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
+
 cls
 echo  Mozbuildtools Version: %VERSION%
 echo ________________________________________________________________________________
@@ -97,6 +106,11 @@ cd ..
 cls
 echo  Mozbuildtools Version: %VERSION%
 echo ________________________________________________________________________________
+
+echo         正在設定工具集...
+cd tools
+7za.exe x -y ..\download\tools1.0.7z > nul 2> nul
+cd ..
 
 echo         正在設定 MinGW...
 mkdir mingw > nul 2> nul
@@ -168,7 +182,7 @@ copy tools\zip.exe msys\bin > nul 2> nul
 copy tools\unzip.exe msys\bin > nul 2> nul
 mkdir msys\etc\profile.d > nul 2> nul
 xcopy /E /Y msys\usr\local msys > nul 2> nul
-msys\bin\bash start-script/set_root.sh
+msys\bin\bash start-script/set_root2.sh
 cd mingw
 move binutils-2.19-bin.tar ..\download\binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
 move w32api-3.12-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
@@ -180,8 +194,10 @@ cd ..
 move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
 
 echo         正在設定 python2.5.4 ...
-call install-python.bat
-echo Y | del /S install-python.bat > nul 2> nul
+mkdir python25
+cd python25
+..\tools\7za.exe x -y ..\download\python2.5.4.7z > nul 2> nul
+cd ..
 
 move wintools.zip download\wintools.zip > nul 2> nul
 
