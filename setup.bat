@@ -83,9 +83,12 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/li
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/regex-0.12-MSYS-1.0.11-1.tar.bz2 regex-0.12-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-core-4.2.1-sjlj-2.tar.gz gcc-core-4.2.1-sjlj-2.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.1-mingw32-dev.tar.gz mingwrt-3.15.1-mingw32-dev.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.1-mingw32-dll.tar.gz mingwrt-3.15.1-mingw32-dll.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-g++-4.2.1-sjlj-2.tar.gz gcc-g++-4.2.1-sjlj-2.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/w32api-3.13-mingw32-dev.tar.gz w32api-3.13-mingw32-dev.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-bin.tar.gz binutils-2.19-mingw32-bin.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gdb-6.8-mingw-3.tar.bz2 gdb-6.8-mingw-3.tar.bz2 
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip pkg-config-0.23-2.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip gettext-runtime-0.17-1.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.18/glib_2.18.2-1_win32.zip glib_2.18.2-1_win32.zip
@@ -118,8 +121,11 @@ cd mingw
 move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-bin.tar > nul 2> nul
 move ..\download\w32api-3.13-mingw32-dev.tar w32api-3.13-mingw32-dev.tar > nul 2> nul
 move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
+move ..\download\mingwrt-3.15.1-mingw32-dll.tar mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
 move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
 move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
+move ..\download\mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz > nul 2> nul
+move ..\download\gdb-6.8-mingw-3.tar gdb-6.8-mingw-3.tar > nul 2> nul
 
 ..\tools\7za x -y *.tar > nul 2> nul
 cd bin
@@ -187,8 +193,11 @@ cd mingw
 move binutils-2.19-bin.tar ..\download\binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
 move w32api-3.12-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
 move mingwrt-3.15.1-mingw32-dev.tar ..\download\mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
+move mingwrt-3.15.1-mingw32-dll.tar ..\download\mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
 move gcc-g++-4.2.1-sjlj-2.tar ..\download\gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
 move gcc-core-4.2.1-sjlj-2.tar ..\download\gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
+move ..\download\mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz > nul 2> nul
+move ..\download\gdb-6.8-mingw-3.tar gdb-6.8-mingw-3.tar > nul 2> nul
 cd ..
 
 move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
