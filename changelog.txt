@@ -1,4 +1,7 @@
-﻿--- 2009-01-01 Jay Wang stu90206@gmail.com
+﻿--- 2009-01-16 Jay Wang stu90206@gmail.com
+ * 修正 setup.bat 之錯誤
+
+--- 2009-01-01 Jay Wang stu90206@gmail.com
  * 修正 setup.bat 之錯誤
  * 更新 Python 至 2.5.4
  * 更新 w32api 至 3.13

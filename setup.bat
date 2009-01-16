@@ -118,13 +118,13 @@ cd ..
 echo         正在設定 MinGW...
 mkdir mingw > nul 2> nul
 cd mingw
-move ..\download\binutils-2.19-bin.tar binutils-2.19-mingw32-bin.tar > nul 2> nul
+move ..\download\binutils-2.19-bin.tar binutils-2.19-bin.tar > nul 2> nul
 move ..\download\w32api-3.13-mingw32-dev.tar w32api-3.13-mingw32-dev.tar > nul 2> nul
 move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
 move ..\download\mingwrt-3.15.1-mingw32-dll.tar mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
 move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
 move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
-move ..\download\mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz > nul 2> nul
+move ..\download\mingw32-make-3.81-20080326-3.tar mingw32-make-3.81-20080326-3.tar > nul 2> nul
 move ..\download\gdb-6.8-mingw-3.tar gdb-6.8-mingw-3.tar > nul 2> nul
 
 ..\tools\7za x -y *.tar > nul 2> nul
@@ -189,18 +189,8 @@ copy tools\unzip.exe msys\bin > nul 2> nul
 mkdir msys\etc\profile.d > nul 2> nul
 xcopy /E /Y msys\usr\local msys > nul 2> nul
 msys\bin\bash start-script/set_root2.sh
-cd mingw
-move binutils-2.19-bin.tar ..\download\binutils-2.19-mingw32-rc1-bin.tar > nul 2> nul
-move w32api-3.12-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
-move mingwrt-3.15.1-mingw32-dev.tar ..\download\mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
-move mingwrt-3.15.1-mingw32-dll.tar ..\download\mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
-move gcc-g++-4.2.1-sjlj-2.tar ..\download\gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
-move gcc-core-4.2.1-sjlj-2.tar ..\download\gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
-move ..\download\mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz > nul 2> nul
-move ..\download\gdb-6.8-mingw-3.tar gdb-6.8-mingw-3.tar > nul 2> nul
-cd ..
 
-move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
+
 
 echo         正在設定 python2.5.4 ...
 mkdir python25
@@ -208,9 +198,19 @@ cd python25
 ..\tools\7za.exe x -y ..\download\python2.5.4.7z > nul 2> nul
 cd ..
 
-move wintools.zip download\wintools.zip > nul 2> nul
-
 echo         刪除最後的暫存檔 ...
+move wintools.zip download\wintools.zip > nul 2> nul
+move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
+cd mingw
+move binutils-2.19-bin.tar ..\download\binutils-2.19-bin.tar > nul 2> nul
+move w32api-3.13-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
+move mingwrt-3.15.1-mingw32-dev.tar ..\download\mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
+move mingwrt-3.15.1-mingw32-dll.tar ..\download\mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
+move gcc-g++-4.2.1-sjlj-2.tar ..\download\gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
+move gcc-core-4.2.1-sjlj-2.tar ..\download\gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
+move mingw32-make-3.81-20080326-3.tar ..\download\mingw32-make-3.81-20080326-3.tar > nul 2> nul
+move gdb-6.8-mingw-3.tar ..\download\gdb-6.8-mingw-3.tar > nul 2> nul
+cd ..
 rmdir /S /Q download > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
 
