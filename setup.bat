@@ -81,10 +81,10 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/au
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-bin.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-dll.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/regex-0.12-MSYS-1.0.11-1.tar.bz2 regex-0.12-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-core-4.2.1-sjlj-2.tar.gz gcc-core-4.2.1-sjlj-2.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.1-mingw32-dev.tar.gz mingwrt-3.15.1-mingw32-dev.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.1-mingw32-dll.tar.gz mingwrt-3.15.1-mingw32-dll.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gcc-g++-4.2.1-sjlj-2.tar.gz gcc-g++-4.2.1-sjlj-2.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-2-core.tar.gz gcc-4.3.2-tdm-2-core.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.2-mingw32-dev.tar.gz mingwrt-3.15.2-mingw32-dev.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.2-mingw32-dll.tar.gz mingwrt-3.15.2-mingw32-dll.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-2-g++.tar.gz gcc-4.3.2-tdm-2-g++.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/w32api-3.13-mingw32-dev.tar.gz w32api-3.13-mingw32-dev.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-bin.tar.gz binutils-2.19-mingw32-bin.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz
@@ -92,7 +92,7 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gd
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip pkg-config-0.23-2.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip gettext-runtime-0.17-1.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.18/glib_2.18.2-1_win32.zip glib_2.18.2-1_win32.zip
-call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.0.2.exe Mercurial-1.0.2.exe
+call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.1.1.exe Mercurial-1.1.1.exe
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
@@ -120,23 +120,15 @@ mkdir mingw > nul 2> nul
 cd mingw
 move ..\download\binutils-2.19-bin.tar binutils-2.19-bin.tar > nul 2> nul
 move ..\download\w32api-3.13-mingw32-dev.tar w32api-3.13-mingw32-dev.tar > nul 2> nul
-move ..\download\mingwrt-3.15.1-mingw32-dev.tar mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
-move ..\download\mingwrt-3.15.1-mingw32-dll.tar mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
-move ..\download\gcc-g++-4.2.1-sjlj-2.tar gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
-move ..\download\gcc-core-4.2.1-sjlj-2.tar gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
+move ..\download\mingwrt-3.15.2-mingw32-dev.tar mingwrt-3.15.2-mingw32-dev.tar > nul 2> nul
+move ..\download\mingwrt-3.15.2-mingw32-dll.tar mingwrt-3.15.2-mingw32-dll.tar > nul 2> nul
+move ..\download\gcc-4.3.2-tdm-2-g++.tar gcc-4.3.2-tdm-2-g++.tar > nul 2> nul
+move ..\download\gcc-4.3.2-tdm-2-core.tar gcc-4.3.2-tdm-2-core.tar > nul 2> nul
 move ..\download\mingw32-make-3.81-20080326-3.tar mingw32-make-3.81-20080326-3.tar > nul 2> nul
 move ..\download\gdb-6.8-mingw-3.tar gdb-6.8-mingw-3.tar > nul 2> nul
 
 ..\tools\7za x -y *.tar > nul 2> nul
 cd bin
-move gcc-sjlj.exe gcc.exe > nul 2> nul
-move g++-sjlj.exe g++.exe > nul 2> nul
-move cpp-sjlj.exe cpp.exe > nul 2> nul 
-move c++-sjlj.exe c++.exe > nul 2> nul
-move mingw32-c++-sjlj.exe mingw32-c++.exe > nul 2> nul
-move mingw32-g++-sjlj.exe mingw32-g++.exe > nul 2> nul
-move mingw32-gcc-4.2.1-sjlj.exe mingw32-gcc-4.2.1.exe > nul 2> nul
-move mingw32-gcc-sjlj.exe mingw32-gcc.exe > nul 2> nul
 cd ..
 cd ..
 
@@ -169,7 +161,7 @@ tools\7za x nsis-2.22.zip > nul 2> nul
 rename nsis-2.22 NSIS > nul 2> nul
 
 echo         正在設定 Mercurial...
-tools\innounp.exe -x download\Mercurial-1.0.2.exe > nul 2> nul
+tools\innounp.exe -x download\Mercurial-1.1.1.exe > nul 2> nul
 rename {app} Mercurial > nul 2> nul
 move install_script.iss Mercurial\install_script.iss > nul 2> nul
 
@@ -204,10 +196,10 @@ move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
 cd mingw
 move binutils-2.19-bin.tar ..\download\binutils-2.19-bin.tar > nul 2> nul
 move w32api-3.13-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
-move mingwrt-3.15.1-mingw32-dev.tar ..\download\mingwrt-3.15.1-mingw32-dev.tar > nul 2> nul
-move mingwrt-3.15.1-mingw32-dll.tar ..\download\mingwrt-3.15.1-mingw32-dll.tar > nul 2> nul
-move gcc-g++-4.2.1-sjlj-2.tar ..\download\gcc-g++-4.2.1-sjlj-2.tar > nul 2> nul
-move gcc-core-4.2.1-sjlj-2.tar ..\download\gcc-core-4.2.1-sjlj-2.tar > nul 2> nul
+move mingwrt-3.15.2-mingw32-dev.tar ..\download\mingwrt-3.15.2-mingw32-dev.tar > nul 2> nul
+move mingwrt-3.15.2-mingw32-dll.tar ..\download\mingwrt-3.15.2-mingw32-dll.tar > nul 2> nul
+move gcc-4.3.2-tdm-2-g++.tar ..\download\gcc-4.3.2-tdm-2-g++.tar > nul 2> nul
+move gcc-4.3.2-tdm-2-core.tar ..\download\gcc-4.3.2-tdm-2-core.tar > nul 2> nul
 move mingw32-make-3.81-20080326-3.tar ..\download\mingw32-make-3.81-20080326-3.tar > nul 2> nul
 move gdb-6.8-mingw-3.tar ..\download\gdb-6.8-mingw-3.tar > nul 2> nul
 cd ..
