@@ -15,4 +15,12 @@ echo "@echo off" > start-msys.bat
 echo "set ROOT=`pwd -W`" >> start-msys.bat
 cat start-msys.bat.in >> start-msys.bat
 tools/todos.exe start-msys.bat
+echo "@echo off" > start-msys-rxvt.bat
+echo "set ROOT=`pwd -W`" >> start-msys-rxvt.bat
+cat start-msys-rxvt.bat.in >> start-msys-rxvt.bat
+tools/todos.exe start-msys-rxvt.bat
+echo "@echo off" > start-cmd.bat
+echo "set ROOT=`pwd -W`" >> start-cmd.bat
+cat start-cmd.bat.in >> start-cmd.bat
+tools/todos.exe start-cmd.bat
 

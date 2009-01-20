@@ -1,4 +1,8 @@
-﻿--- 2009-01-18 Jay Wang stu90206@gmail.com
+﻿--- 2009-01-20 Jay Wang stu90206@gmail.com
+ * 修改版本號至 1.0 beta 1
+ * 新增 start-cmd.bat start-msys-rxvt.bat
+
+--- 2009-01-18 Jay Wang stu90206@gmail.com
  * 更新 mingw-runtime 至 3.15.2
  * 實驗更新 gcc 至 4.3.2-tdm-2
  * 更新 hg 至 1.1.1

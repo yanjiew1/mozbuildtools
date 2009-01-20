@@ -4,7 +4,7 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
 ＊ 版本說明: 
-  - 版本: 0.3b3
+  - 版本: 1.0 beta 1
   - tools 改由網路下載
   - 修正 Setup 錯誤
   - 更新 Python 至 2.5.4
