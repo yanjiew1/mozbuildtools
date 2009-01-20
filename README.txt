@@ -5,11 +5,8 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 
 ＊ 版本說明: 
   - 版本: 1.0 beta 1
-  - tools 改由網路下載
-  - 修正 Setup 錯誤
-  - 更新 Python 至 2.5.4
-  - 更新 w32api 至 3.13
-  - 更新 binutils 至 2.19
+  - 實驗 GCC 4.3.2
+  - 詳情請看 Changelog.txt
 
 ＊ Patch 檔版本需求: 0.3 以上
   - 請特別注意 patch 檔的開頭是否有標示 0.3 。
@@ -24,9 +21,8 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 
 ＊ 安裝步驟:
   1. 執行 Setup.bat
-  2. 等程式跑完，再執行 install-python.bat
-  3. 然後執行 start-msys.bat 就可啟動 msys
-  4. 如需清理空間，請參閱下面的「安裝好後空間清理」
+  2. 然後執行 start-msys.bat 就可啟動 msys
+  3. 如需清理空間，請參閱下面的「安裝好後空間清理」
  -- 詳細步驟請參閱網頁說明
 
 ＊ 注意事項:
@@ -37,8 +33,8 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 ＊ 安裝好後空間清理:
   - 執行 compress.bat 以壓縮 dll 及 exe 檔
 
-＊ 如需下載 Firefox 3.2 最新的原始碼，請至
-http://hg.mozilla.org/mozilla-central/summary
+＊ 如需下載 Firefox 3.2 最新的原始碼，請輸入指令
+hg clone http://hg.mozilla.org/mozilla-central firefox-src
 
 ＊ 如需下載最新 Patch ，請至
 http://sites.google.com/site/usemingwtobuildfirefox/Home/patch-dang-an-gui
@@ -48,13 +44,17 @@ http://sites.google.com/site/usemingwtobuildfirefox/Home/shou-quan-xie-yi
 本程式除了第三方程式以外，其餘以 BSD 許可證 為授權協議
 
 建議 .mozconfig
--------------------
+==================
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../mozilla-mingw
+
+# pgo
 mk_add_options PROFILE_GEN_SCRIPT='$(PYTHON) $(MOZ_OBJDIR)/_profile/pgo/profileserver.py'
 
 ac_add_options  --disable-debug
-ac_add_options  --enable-optimize="-O3 -march=prescott -freorder-blocks -fno-reorder-functions -msse3 -mmmx -mfpmath=sse -D_FORTIFY_SOURCE=2"
+
+# 如需使用最佳化，不保證編譯出來的程式可以使用
+ac_add_options  --disable-optimize
 ac_add_options  --disable-tests
 ac_add_options  --disable-installer
 ac_add_options  --disable-accessibility
@@ -65,10 +65,12 @@ ac_add_options  --disable-static
 ac_add_options  --with-branding=browser/branding/unofficial
 ac_add_options  --enable-strip
 
-# 一般使用者建議使用 -w 來隱藏警告訊息以增快編譯速度，如是開發者就不必隱藏
+# 使用 -w 隱藏警告訊息，以減少訊息輸出，減少等待終端機的輸出
 CFLAGS="-w"
 CXXFLAGS="-w"
 CPPFLAGS="-w"
+
+# 設定 MinGW 環境
 CC="gcc"
 CXX="g++"
 CPP="cpp"
