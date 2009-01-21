@@ -12,15 +12,16 @@
 +    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; fi ; ac_cv_prog_CXXCPP="$CXXCPP"
      if test -z "$LD"; then LD=link; fi
      if test -z "$AS"; then AS=ml; fi
-@@ -531,6 +531,7 @@
+@@ -531,6 +531,8 @@
          unset _MSVC_VER_FILTER
          
      else
 +        SKIP_EDITLINE_CHECKS=1
++        _WIN32_MINGW=1
          # Check w32api version
          _W32API_MAJOR_VERSION=`echo $W32API_VERSION | $AWK -F\. '{ print $1 }'`
          _W32API_MINOR_VERSION=`echo $W32API_VERSION | $AWK -F\. '{ print $2 }'`
-@@ -590,6 +591,7 @@
+@@ -590,6 +592,7 @@
  AC_PROG_CXXCPP
  
  if test -n "$_WIN32_MSVC"; then
@@ -28,7 +29,17 @@
      SKIP_PATH_CHECKS=1
      SKIP_COMPILER_CHECKS=1
      SKIP_LIBRARY_CHECKS=1
-@@ -4866,5 +4868,5 @@
+@@ -615,6 +618,9 @@
+         AC_DEFINE(JS_STDDEF_H_HAS_INTPTR_T)
+         ;;
+     esac
++elif test -n "$_WIN32_MINGW" ; then
++    AC_DEFINE(HAVE_SYSTEMTIMETOFILETIME)
++    AC_DEFINE(HAVE_GETSYSTEMTIMEASFILETIME)
+ fi
+ 
+ fi # COMPILE_ENVIRONMENT
+@@ -4866,5 +4872,5 @@
  
  dnl Conveniently, Win32 sets SKIP_LIBRARY_CHECKS...
 -if test -z "$SKIP_LIBRARY_CHECKS"; then
