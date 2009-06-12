@@ -1,4 +1,8 @@
-﻿--- 2009-01-20 Jay Wang stu90206@gmail.com
+﻿--- 2009-04-25 Jay Wang stu90206@gmail.com
+ * 修改版本號至 1.0 rc
+ * 更新 gcc 至 4.3.3-tdm-1
+
+--- 2009-01-20 Jay Wang stu90206@gmail.com
  * 修改版本號至 1.0 beta 1
  * 新增 start-cmd.bat start-msys-rxvt.bat
  * 更新 README.txt

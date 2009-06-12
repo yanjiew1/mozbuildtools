@@ -4,8 +4,8 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
 ＊ 版本說明: 
-  - 版本: 1.0 beta 1
-  - 實驗 GCC 4.3.2
+  - 版本: 1.0 rc
+  - 實驗 GCC 4.3.3
   - 詳情請看 Changelog.txt
 
 ＊ Patch 檔版本需求: 0.3 以上
@@ -33,7 +33,7 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 ＊ 安裝好後空間清理:
   - 執行 compress.bat 以壓縮 dll 及 exe 檔
 
-＊ 如需下載 Firefox 3.2 最新的原始碼，請輸入指令
+＊ 如需下載 Firefox 3.6 最新的原始碼，請輸入指令
 hg clone http://hg.mozilla.org/mozilla-central firefox-src
 
 ＊ 如需下載最新 Patch ，請至

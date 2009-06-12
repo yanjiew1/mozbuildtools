@@ -1,5 +1,5 @@
 @echo off
-set VERSION=1.0 beta 1
+set VERSION=1.0 RC
 rem Copyright (c) 2008 ~ 2009, Jay Wang
 rem All rights reserved.
 rem 
@@ -75,28 +75,34 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/fl
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bison-2.3-MSYS-1.0.11-1.tar.bz2 bison-2.3-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/texinfo-4.11-MSYS-1.0.11-1.tar.bz2 texinfo-4.11-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/automake1.10-1.10-1-bin.tar.bz2 automake1.10-1.10-1-bin.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/tar-1.13.19-MSYS-2005.06.08.tar.bz2 tar-1.13.19-MSYS-2005.06.08.tar.bz2   
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/msysCORE-1.0.11-20080826.tar.gz msysCORE-1.0.11-20080826.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/autoconf2.1-2.13-3-bin.tar.bz2  autoconf2.1-2.13-3-bin.tar.bz2 
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-bin.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-dll.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/regex-0.12-MSYS-1.0.11-1.tar.bz2 regex-0.12-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-2-core.tar.gz gcc-4.3.2-tdm-2-core.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.2-mingw32-dev.tar.gz mingwrt-3.15.2-mingw32-dev.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingwrt-3.15.2-mingw32-dll.tar.gz mingwrt-3.15.2-mingw32-dll.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/tdm-gcc/gcc-4.3.2-tdm-2-g++.tar.gz gcc-4.3.2-tdm-2-g++.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/w32api-3.13-mingw32-dev.tar.gz w32api-3.13-mingw32-dev.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/binutils-2.19-mingw32-bin.tar.gz binutils-2.19-mingw32-bin.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gdb-6.8-mingw-3.tar.bz2 gdb-6.8-mingw-3.tar.bz2 
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/gnuwin32/tar-1.13-1-bin.zip tar-1.13-1-bin.zip   
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/gnuwin32/tar-1.13-1-dep.zip tar-1.13-1-dep.zip 
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip pkg-config-0.23-2.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip gettext-runtime-0.17-1.zip
-call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.18/glib_2.18.2-1_win32.zip glib_2.18.2-1_win32.zip
-call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.1.1.exe Mercurial-1.1.1.exe
+call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.20/glib_2.20.1-1_win32.zip glib_2.20.1-1_win32.zip
+call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.2.1.exe Mercurial-1.2.1.exe
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.0-mingw-core-cxx-r2.7z gcc-4.4.0-mingw-core-cxx-r2.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-runtime-20090418.7z mingw-runtime-20090418.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-w32api-20090418.7z mingw-w32api-20090418.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/binutils-2.19.1-mingw.7z binutils-2.19.1-mingw.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
+set BINUTILS=binutils-2.19.1-mingw.7z
+set GCC=gcc-4.4.0-mingw-core-cxx-r2.7z
+set MINGW_W32API=mingw-w32api-20090418.7z
+set MINGW_RUNTIME=mingw-runtime-20090418.7z
+set GDB=gdb-6.8-mingw-3.tar
+set MAKE=mingw32-make-3.81-20080326-3.tar
+
 
 cls
 echo  Mozbuildtools Version: %VERSION%
@@ -118,14 +124,12 @@ cd ..
 echo         正在設定 MinGW...
 mkdir mingw > nul 2> nul
 cd mingw
-move ..\download\binutils-2.19-bin.tar binutils-2.19-bin.tar > nul 2> nul
-move ..\download\w32api-3.13-mingw32-dev.tar w32api-3.13-mingw32-dev.tar > nul 2> nul
-move ..\download\mingwrt-3.15.2-mingw32-dev.tar mingwrt-3.15.2-mingw32-dev.tar > nul 2> nul
-move ..\download\mingwrt-3.15.2-mingw32-dll.tar mingwrt-3.15.2-mingw32-dll.tar > nul 2> nul
-move ..\download\gcc-4.3.2-tdm-2-g++.tar gcc-4.3.2-tdm-2-g++.tar > nul 2> nul
-move ..\download\gcc-4.3.2-tdm-2-core.tar gcc-4.3.2-tdm-2-core.tar > nul 2> nul
-move ..\download\mingw32-make-3.81-20080326-3.tar mingw32-make-3.81-20080326-3.tar > nul 2> nul
-move ..\download\gdb-6.8-mingw-3.tar gdb-6.8-mingw-3.tar > nul 2> nul
+move ..\download\%BINUTILS% %BINUTILS% > nul 2> nul
+move ..\download\%MINGW_W32API% %MINGW_W32API% > nul 2> nul
+move ..\download\%MINGW_RUNTIME% %MINGW_RUNTIME% > nul 2> nul
+move ..\download\%GCC% %GCC% > nul 2> nul
+move ..\download\%MAKE% %MAKE% > nul 2> nul
+move ..\download\%GDB% %%GDB% > nul 2> nul
 
 ..\tools\7za x -y *.tar > nul 2> nul
 cd bin
@@ -161,7 +165,7 @@ tools\7za x nsis-2.22.zip > nul 2> nul
 rename nsis-2.22 NSIS > nul 2> nul
 
 echo         正在設定 Mercurial...
-tools\innounp.exe -x download\Mercurial-1.1.1.exe > nul 2> nul
+tools\innounp.exe -x download\Mercurial-1.2.1.exe > nul 2> nul
 rename {app} Mercurial > nul 2> nul
 move install_script.iss Mercurial\install_script.iss > nul 2> nul
 
@@ -194,14 +198,12 @@ echo         刪除最後的暫存檔 ...
 move wintools.zip download\wintools.zip > nul 2> nul
 move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
 cd mingw
-move binutils-2.19-bin.tar ..\download\binutils-2.19-bin.tar > nul 2> nul
-move w32api-3.13-mingw32-dev.tar ..\download\w32api-3.12-mingw32-dev.tar > nul 2> nul
-move mingwrt-3.15.2-mingw32-dev.tar ..\download\mingwrt-3.15.2-mingw32-dev.tar > nul 2> nul
-move mingwrt-3.15.2-mingw32-dll.tar ..\download\mingwrt-3.15.2-mingw32-dll.tar > nul 2> nul
-move gcc-4.3.2-tdm-2-g++.tar ..\download\gcc-4.3.2-tdm-2-g++.tar > nul 2> nul
-move gcc-4.3.2-tdm-2-core.tar ..\download\gcc-4.3.2-tdm-2-core.tar > nul 2> nul
-move mingw32-make-3.81-20080326-3.tar ..\download\mingw32-make-3.81-20080326-3.tar > nul 2> nul
-move gdb-6.8-mingw-3.tar ..\download\gdb-6.8-mingw-3.tar > nul 2> nul
+move %BINUTILS% ..\download\%BINUTILS% > nul 2> nul
+move %MINGW_W32API% ..\download\%MINGW_W32API% > nul 2> nul
+move %MINGW_RUNTIME% ..\download\%MINGW_RUNTIME% > nul 2> nul
+move %GCC% ..\download\%GCC% > nul 2> nul
+move %MAKE% ..\download\%MAKE% > nul 2> nul
+move %GDB% ..\download\%%GDB% > nul 2> nul
 cd ..
 rmdir /S /Q download > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul

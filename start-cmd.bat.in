@@ -17,6 +17,6 @@ set C_INCLUDE_PATH=%ROOT%\mingw\include
 set CPLUS_INCLUDE_PATH=%ROOT%\mingw\include
 set LIBRARY_PATH=%ROOT%\lib
 cd msys
-echo   Mozbuildtools Version: 1.0 beta 1
+echo   Mozbuildtools Version: 1.0 RC
 echo =====================================
 cmd
