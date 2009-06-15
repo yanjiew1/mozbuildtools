@@ -48,7 +48,10 @@ rmdir /S /Q Mercurial > nul 2> nul
 rmdir /S /Q moztools > nul 2> nul
 rmdir /S /Q python25 > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
+rmdir /S /Q {tmp} > nul 2> nul
 del start-msys.bat > nul 2> nul
+del start-cmd.bat > nul 2> nul
+del start-msys-rxvt.bat > nul 2> nul
 del install-python.bat > nul 2> nul
 del tools\fromdos.exe > nul 2> nul
 del tools\innounp.exe > nul 2> nul
@@ -61,11 +64,9 @@ mkdir download > nul 2> nul
 
 cd download
 
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bash-3.1-MSYS-1.0.11-1.tar.bz2 bash-3.1-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bison-2.3-MSYS-1.0.11-1.tar.bz2 bison-2.3-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/cvs-1.11.22-MSYS-1.0.11-1-bin.tar.gz cvs-1.11.22-MSYS-1.0.11-1-bin.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/diffutils-2.8.7-MSYS-1.0.11-1.tar.bz2 diffutils-2.8.7-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/findutils-4.3.0-MSYS-1.0.11-3-bin.tar.gz findutils-4.3.0-MSYS-1.0.11-3-bin.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/coreutils-5.97-MSYS-1.0.11-snapshot.tar.bz2 coreutils-5.97-MSYS-1.0.11-snapshot.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/inetutils-1.3.2-40-MSYS-1.0.11-2-bin.tar.gz inetutils-1.3.2-40-MSYS-1.0.11-2-bin.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/perl-5.6.1-MSYS-1.0.11-1.tar.bz2 perl-5.6.1-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/crypt-1.1-1-MSYS-1.0.11-1.tar.bz2 crypt-1.1-1-MSYS-1.0.11-1.tar.bz2
@@ -75,18 +76,19 @@ call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/fl
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bison-2.3-MSYS-1.0.11-1.tar.bz2 bison-2.3-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/texinfo-4.11-MSYS-1.0.11-1.tar.bz2 texinfo-4.11-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/automake1.10-1.10-1-bin.tar.bz2 automake1.10-1.10-1-bin.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/msysCORE-1.0.11-20080826.tar.gz msysCORE-1.0.11-20080826.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/msysCORE-1.0.11-rc-1-bin.tar.gz msysCORE-1.0.11-rc-1-bin.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/autoconf2.1-2.13-3-bin.tar.bz2  autoconf2.1-2.13-3-bin.tar.bz2 
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-bin.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-dll.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/regex-0.12-MSYS-1.0.11-1.tar.bz2 regex-0.12-MSYS-1.0.11-1.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gdb-6.8-mingw-3.tar.bz2 gdb-6.8-mingw-3.tar.bz2 
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/make-3.81-MSYS-1.0.11-2.tar.bz2 make-3.81-MSYS-1.0.11-2.tar.bz2
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/gnuwin32/tar-1.13-1-bin.zip tar-1.13-1-bin.zip   
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/gnuwin32/tar-1.13-1-dep.zip tar-1.13-1-dep.zip 
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config-0.23-2.zip pkg-config-0.23-2.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip gettext-runtime-0.17-1.zip
-call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.20/glib_2.20.1-1_win32.zip glib_2.20.1-1_win32.zip
+call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.20/glib_2.20.3-1_win32.zip glib_2.20.3-1_win32.zip
 call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.2.1.exe Mercurial-1.2.1.exe
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/nsis/nsis-2.22.zip nsis-2.22.zip
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
@@ -98,8 +100,8 @@ call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/binutils-
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 set BINUTILS=binutils-2.19.1-mingw.7z
 set GCC=gcc-4.4.0-mingw-core-cxx-r2.7z
-set MINGW_W32API=mingw-w32api-20090418.7z
-set MINGW_RUNTIME=mingw-runtime-20090418.7z
+set MINGWW32API=mingw-w32api-20090418.7z
+set MINGWRUNTIME=mingw-runtime-20090418.7z
 set GDB=gdb-6.8-mingw-3.tar
 set MAKE=mingw32-make-3.81-20080326-3.tar
 
@@ -125,14 +127,18 @@ echo         正在設定 MinGW...
 mkdir mingw > nul 2> nul
 cd mingw
 move ..\download\%BINUTILS% %BINUTILS% > nul 2> nul
-move ..\download\%MINGW_W32API% %MINGW_W32API% > nul 2> nul
-move ..\download\%MINGW_RUNTIME% %MINGW_RUNTIME% > nul 2> nul
+move ..\download\%MINGWW32API% %MINGWW32API% > nul 2> nul
+move ..\download\%MINGWRUNTIME% %MINGWRUNTIME% > nul 2> nul
 move ..\download\%GCC% %GCC% > nul 2> nul
 move ..\download\%MAKE% %MAKE% > nul 2> nul
-move ..\download\%GDB% %%GDB% > nul 2> nul
+move ..\download\%GDB% %GDB% > nul 2> nul
 
 ..\tools\7za x -y *.tar > nul 2> nul
+..\tools\7za x -y *.7z > nul 2> nul
 cd bin
+cd ..
+cd include
+copy ..\..\start-script\windows.h windows.h > nul 2> nul
 cd ..
 cd ..
 
@@ -199,14 +205,15 @@ move wintools.zip download\wintools.zip > nul 2> nul
 move nsis-2.22.zip download\nsis-2.22.zip > nul 2> nul
 cd mingw
 move %BINUTILS% ..\download\%BINUTILS% > nul 2> nul
-move %MINGW_W32API% ..\download\%MINGW_W32API% > nul 2> nul
-move %MINGW_RUNTIME% ..\download\%MINGW_RUNTIME% > nul 2> nul
+move %MINGWW32API% ..\download\%MINGWW32API% > nul 2> nul
+move %MINGWRUNTIME% ..\download\%MINGWRUNTIME% > nul 2> nul
 move %GCC% ..\download\%GCC% > nul 2> nul
 move %MAKE% ..\download\%MAKE% > nul 2> nul
-move %GDB% ..\download\%%GDB% > nul 2> nul
+move %GDB% ..\download\%GDB% > nul 2> nul
 cd ..
 rmdir /S /Q download > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
+rmdir /S /Q {tmp} > nul 2> nul
 
 
 cls
