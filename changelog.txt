@@ -1,4 +1,7 @@
-﻿--- 2009-04-25 Jay Wang stu90206@gmail.com
+﻿--- 2009-08-02 Jay Wang stu90206@gmail.com
+ * 將版本管理系統從 svn 轉到 git (http://github.com/stu90206/mozbuildtools)
+
+--- 2009-04-25 Jay Wang stu90206@gmail.com
  * 修改版本號至 1.0 rc
  * 更新 gcc 至 4.3.3-tdm-1
 
