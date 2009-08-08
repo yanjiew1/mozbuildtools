@@ -1,4 +1,21 @@
-﻿--- 2009-08-02 Jay Wang stu90206@gmail.com
+﻿==========================================
+  mozbuildtools 版本變更紀錄 (Changelog)
+==========================================
+
+--- 2009-08-08 Jay Wang stu90206@gmail.com
+ * 使用 MinGW64 之 shlobj.h 替換原來的 shlobj.h
+
+--- 2009-08-03 Jay Wang stu90206@gmail.com
+ * 修正 libuuid.a (新增原本沒有被支援的函式庫)(來自MinGW64)
+ * 新增 netcon.h (配合 libuuid.a 修正)(來自MinGW64)
+ * 新增 sched.h (配合 libuuid.a 修正)(來自MinGW64)
+ * 新增 textstor.h (配合 libuuid.a 修正)(來自MinGW64)
+ * 新增 semaphore.h (pthread-win32)
+ * 更新 msysCORE 1.0.11rc 到 1.0.11
+ * 移除 texinfo
+ * 變更版本號至 1.1rc
+
+--- 2009-08-02 Jay Wang stu90206@gmail.com
  * 將版本管理系統從 svn 轉到 git (http://github.com/stu90206/mozbuildtools)
 
 --- 2009-04-25 Jay Wang stu90206@gmail.com

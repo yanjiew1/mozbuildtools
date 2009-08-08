@@ -1,5 +1,5 @@
 @echo off
-set VERSION=1.0 RC
+set VERSION=1.1 RC
 rem Copyright (c) 2008 ~ 2009, Jay Wang
 rem All rights reserved.
 rem 
@@ -139,6 +139,7 @@ cd bin
 cd ..
 cd include
 copy ..\..\start-script\windows.h windows.h > nul 2> nul
+copy ..\..\start-script\shlobj.h shlobj.h > nul 2> nul
 cd ..
 cd ..
 
@@ -199,6 +200,9 @@ mkdir python25
 cd python25
 ..\tools\7za.exe x -y ..\download\python2.5.4.7z > nul 2> nul
 cd ..
+
+echo         正在修正 libuuid.a ...
+msys\bin\bash start-script/libuuid-fix/Compile.sh
 
 echo         刪除最後的暫存檔 ...
 move wintools.zip download\wintools.zip > nul 2> nul

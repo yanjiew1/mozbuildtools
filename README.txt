@@ -1,12 +1,15 @@
-﻿mozbuildtools 使用說明
+﻿    mozbuildtools 使用說明
 ------------------------------
 mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 目前測試 Firefox 可以成功的被編譯。
 
+警告：目前 Mozilla 官方 Windows 版並非使用 MinGW 編譯，
+      且使用 MinGW 編譯的版本有一些問題待解決。
+
 ＊ 版本說明: 
-  - 版本: 1.0 rc
-  - 實驗 GCC 4.3.3
-  - 詳情請看 Changelog.txt
+  - 版本: 1.1 rc
+  - 實驗 GCC 4.4.0
+  - 完整變動報告請看 Changelog.txt
 
 ＊ Patch 檔版本需求: 0.3 以上
   - 請特別注意 patch 檔的開頭是否有標示 0.3 。
@@ -27,8 +30,15 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 
 ＊ 注意事項:
   - 此程式不能安裝在含有空白字元的路徑
-  - 建議不要使用 Vista 系統
+  - 如使用 Vista 以上的作業系統，請從「開始」->「所有程式」->「附屬應用程式」->「命令提示字元」按下右鍵->「以系統管理員身份執行」或選擇關閉 UAC。
   - 編譯好執行的檔案後，記得將 NSPR、moztools 的 DLL 檔跟 Firefox 放在一起才能運作。
+    (使用新版以上的 patch 會自動修正)
+
+＊ 如何編譯:
+  1. 先撰寫好 .mozconfig
+  2. 打上 patch
+  3. make -f client.mk build
+  4. 完成
 
 ＊ 安裝好後空間清理:
   - 執行 compress.bat 以壓縮 dll 及 exe 檔
@@ -43,7 +53,7 @@ http://sites.google.com/site/usemingwtobuildfirefox/Home/patch-dang-an-gui
 http://sites.google.com/site/usemingwtobuildfirefox/Home/shou-quan-xie-yi
 本程式除了第三方程式以外，其餘以 BSD 許可證 為授權協議
 
-建議 .mozconfig
+ 建議 .mozconfig
 ==================
 ac_add_options --enable-application=browser
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../mozilla-mingw
@@ -64,6 +74,7 @@ ac_add_options  --enable-shared
 ac_add_options  --disable-static
 ac_add_options  --with-branding=browser/branding/unofficial
 ac_add_options  --enable-strip
+ac_add_options  --disable-necko-wifi
 
 # 使用 -w 隱藏警告訊息，以減少訊息輸出，減少等待終端機的輸出
 CFLAGS="-w"
