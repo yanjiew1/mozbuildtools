@@ -3,6 +3,8 @@
 #
 # Patch: Version 0.3
 #
+# For Rev. 80abbea018b2
+#
 --- a/js/src/configure.in
 +++ b/js/src/configure.in
 @@ -179,5 +179,5 @@
