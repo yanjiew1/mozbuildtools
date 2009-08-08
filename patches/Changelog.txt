@@ -1,4 +1,7 @@
-﻿--- 2009-01-20 Jay Wang stu90206@gmail.com
+﻿--- 2009-08-08 Jay Wang stu90206@gmail.com
+ * 將最新 patch 檔放置於 /patch/mozilla.patch ，方便連結取用 
+
+--- 2009-01-20 Jay Wang stu90206@gmail.com
  * 同步 hg ，新增 3.2-a1c1a8bfd19e.patch
 
 --- 2008-12-13 Jay Wang stu90206@gmail.com

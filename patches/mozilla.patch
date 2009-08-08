@@ -1,0 +1,427 @@
+#
+# This file has no copyright assigned and is placed in the Public Domain.
+#
+# Patch: Version 0.3
+#
+--- a/js/src/configure.in
++++ b/js/src/configure.in
+@@ -179,5 +179,5 @@
+     if test -z "$CXX"; then CXX=cl; fi
+     if test -z "$CPP"; then CPP="cl -E -nologo"; fi
+-    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; ac_cv_prog_CXXCPP="$CXXCPP"; fi
++    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; fi ; ac_cv_prog_CXXCPP="$CXXCPP"
+     if test -z "$LD"; then LD=link; fi
+     if test -z "$AS"; then AS=ml; fi
+@@ -522,6 +522,7 @@
+         unset _MSVC_VER_FILTER
+ 
+     else
++        _WIN32_MINGW=1
+         # Check w32api version
+         _W32API_MAJOR_VERSION=`echo $W32API_VERSION | $AWK -F\. '{ print $1 }'`
+         _W32API_MINOR_VERSION=`echo $W32API_VERSION | $AWK -F\. '{ print $2 }'`
+@@ -606,6 +607,9 @@
+         AC_DEFINE(JS_STDDEF_H_HAS_INTPTR_T)
+         ;;
+     esac
++elif test -n "$_WIN32_MINGW" ; then
++    AC_DEFINE(HAVE_SYSTEMTIMETOFILETIME)
++    AC_DEFINE(HAVE_GETSYSTEMTIMEASFILETIME)
+ fi
+ 
+ fi # COMPILE_ENVIRONMENT
+--- a/nsprpub/configure.in
++++ b/nsprpub/configure.in
+@@ -713,6 +713,10 @@
+     OS_ARCH='CYGWIN_NT-4.0'
+     OS_TARGET=WIN95
+     ;;
++MINGW32_NT*)
++    OS_ARCH='WINNT'
++    OS_TARGET=WIN95
++    ;;
+ OS_2)
+     OS_ARCH=OS2
+     OS_TARGET=OS2
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -93,6 +93,10 @@
+ 	$(RM) -rf $(DIST)/public
+ 	$(RM) -rf $(DIST)/bin/components
+ 	$(RM) -rf _tests
++ifeq ($(OS_ARCH),WINNT)
++	test ! -d $(DIST)/bin && mkdir -p $(DIST)/bin ; echo
++	for files in `find "${MOZ_TOOLS}/bin" -name '*.dll'` ; do cp "$$files" "$(DIST)/bin" ; done ;
++endif
+ 
+ # Build pseudo-external modules first when export is explicitly called
+ export::
+--- a/config/config.mk
++++ b/config/config.mk
+@@ -397,8 +397,10 @@
+ OS_CXXFLAGS += $(PROFILE_GEN_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_GEN_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_GENERATE
+ 
+@@ -408,8 +410,10 @@
+ OS_CXXFLAGS += $(PROFILE_USE_CFLAGS)
+ OS_LDFLAGS += $(PROFILE_USE_LDFLAGS)
+ ifeq (WINNT,$(OS_ARCH))
++ifndef GNU_CC
+ AR_FLAGS += -LTCG
+ endif
++endif
+ endif # INTERNAL_TOOLS
+ endif # MOZ_PROFILE_USE
+ endif # NO_PROFILE_GUIDED_OPTIMIZE
+--- a/configure.in
++++ b/configure.in
+@@ -189,7 +189,7 @@
+     if test -z "$CC"; then CC=cl; fi
+     if test -z "$CXX"; then CXX=cl; fi
+     if test -z "$CPP"; then CPP="cl -E -nologo"; fi
+-    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; ac_cv_prog_CXXCPP="$CXXCPP"; fi
++    if test -z "$CXXCPP"; then CXXCPP="cl -TP -E -nologo"; fi; ac_cv_prog_CXXCPP="$CXXCPP"
+     if test -z "$LD"; then LD=link; fi
+     if test -z "$AS"; then AS=ml; fi
+     if test -z "$MIDL"; then MIDL=midl; fi
+@@ -2167,7 +2167,7 @@
+         DYNAMIC_XPCOM_LIBS='-L$(LIBXUL_DIST)/lib -lxpcom -lxpcom_core'
+         XPCOM_FROZEN_LDOPTS='-L$(LIBXUL_DIST)/lib -lxpcom'
+         DLL_PREFIX=
+-        IMPORT_LIB_SUFFIX=dll.a
++        IMPORT_LIB_SUFFIX=a
+     else
+         TARGET_COMPILER_ABI=msvc
+         HOST_CC='$(CC)'
+@@ -4541,6 +4541,7 @@
+ MOZ_NO_INSPECTOR_APIS=
+ MOZ_NO_XPCOM_OBSOLETE=
+ MOZ_NO_FAST_LOAD=
++NS_ENABLE_TSF=1
+ MOZ_OGG=1
+ MOZ_SYDNEYAUDIO=
+ MOZ_WAVE=1
+@@ -5511,6 +5512,25 @@
+     AC_DEFINE(MOZ_NO_FAST_LOAD)
+ fi
+ 
++dnl
++dnl tsf
++dnl
++if test "$GNU_CC" ; then
++    NS_ENABLE_TSF=
++fi
++if test "$WINCE" ; then
++    NS_ENABLE_TSF=
++fi
++
++MOZ_ARG_DISABLE_BOOL(tsf,
++[  --disable-tsf       Disable tsf support],
++    NS_ENABLE_TSF=,
++    NS_ENABLE_TSF=1)
++AC_SUBST(NS_ENABLE_TSF)
++if test "$NS_ENABLE_TSF"; then
++    AC_DEFINE(NS_ENABLE_TSF)
++fi
++
+ dnl ========================================================
+ dnl = Disable Ogg Codecs
+ dnl ========================================================
+@@ -8024,6 +8044,7 @@
+ AC_SUBST(BIN_FLAGS)
+ AC_SUBST(NS_USE_NATIVE)
+ AC_SUBST(MOZ_WIDGET_TOOLKIT)
++AC_SUBST(NS_ENABLE_TSF)
+ AC_SUBST(MOZ_GFX_TOOLKIT)
+ AC_SUBST(MOZ_UPDATE_XTERM)
+ AC_SUBST(MINIMO)
+--- a/security/manager/Makefile.in
++++ b/security/manager/Makefile.in
+@@ -175,6 +175,8 @@
+ DEFAULT_GMAKE_FLAGS += MOZILLA_CLIENT=1
+ DEFAULT_GMAKE_FLAGS += NO_MDUPDATE=1
+ DEFAULT_GMAKE_FLAGS += NSS_ENABLE_ECC=1
++# Pass theIMPORT_LIB_SUFFIX into the sub makefiles
++DEFAULT_GMAKE_FLAGS += IMPORT_LIB_SUFFIX=.$(IMPORT_LIB_SUFFIX)
+ ifdef NSS_DISABLE_DBM 
+ DEFAULT_GMAKE_FLAGS += NSS_DISABLE_DBM=1
+ endif
+--- a/security/nss/lib/ckfw/capi/Makefile
++++ b/security/nss/lib/ckfw/capi/Makefile
+@@ -54,6 +54,9 @@
+ 	-lplc4 \
+ 	-lplds4 \
+ 	-lnspr4 \
++	-lcrypt32 \
++	-ladvapi32 \
++	-lrpcrt4 \
+ 	$(NULL)
+ else 
+ EXTRA_SHARED_LIBS += \
+--- a/security/nss/lib/ckfw/capi/cobject.c
++++ b/security/nss/lib/ckfw/capi/cobject.c
+@@ -172,7 +172,7 @@
+       len = (len << 8) | (unsigned) *src++;
+     }
+   }
+-  if (len + (src-start) > (unsigned int)size) {
++  if (len + ((unsigned char*)src-start) > (unsigned int)size) {
+     return start;
+   }
+   if (next) {
+--- a/xpcom/base/nscore.h
++++ b/xpcom/base/nscore.h
+@@ -167,6 +167,22 @@
+ #endif
+ 
+ #ifdef NS_WIN32
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) || defined(__GNUC__) 
++
++#define NS_IMPORT __declspec(dllimport)
++#define NS_IMPORT_(type) __declspec(dllimport) type
++#define NS_EXPORT __declspec(dllexport)
++#define NS_EXPORT_(type) __declspec(dllexport) type
++#define NS_IMETHOD_(type) virtual type
++#define NS_IMETHODIMP_(type) type
++#define NS_METHOD_(type) type
++#define NS_CALLBACK_(_type, _name) _type (* _name)
++#define NS_STDCALL
++#define NS_FROZENCALL __cdecl
++#define NS_EXPORT_STATIC_MEMBER_(type) type
++#define NS_IMPORT_STATIC_MEMBER_(type) type
++
++#else
+ 
+ #define NS_IMPORT __declspec(dllimport)
+ #define NS_IMPORT_(type) __declspec(dllimport) type __stdcall
+@@ -186,6 +202,8 @@
+ 
+ #define NS_EXPORT_STATIC_MEMBER_(type) type
+ #define NS_IMPORT_STATIC_MEMBER_(type) type
++
++#endif
+ 
+ #elif defined(XP_OS2) && defined(__declspec)
+ 
+@@ -238,13 +256,8 @@
+  *  when http://gcc.gnu.org/bugzilla/show_bug.cgi?id=11893 is fixed.
+  */
+ 
+-#ifdef __GNUC__
+-#define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+-  typeof(&class::func) name
+-#else
+ #define NS_STDCALL_FUNCPROTO(ret, name, class, func, args) \
+   ret (NS_STDCALL class::*name) args
+-#endif
+ 
+ /**
+  * Deprecated declarations.
+--- a/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
++++ b/xpcom/reflect/xptcall/src/md/win32/xptcstubs.cpp
+@@ -44,9 +44,15 @@
+ #error "This code is for Win32 only"
+ #endif
+ 
++#if defined(MOZ_DISABLE_XPCOM_STDCALL) || defined(__GNUC__)
++#define STDCALL
++#else
++#define STDCALL __stdcall
++#endif
++
+ extern "C" {
+ 
+-static nsresult __stdcall
++static nsresult STDCALL
+ PrepareAndDispatch(nsXPTCStubBase* self, PRUint32 methodIndex,
+                    PRUint32* args, PRUint32* stackBytesToPop)
+ {
+@@ -157,7 +163,7 @@
+ #else
+ 
+ #define STUB_ENTRY(n) \
+-nsresult __stdcall nsXPTCStubBase::Stub##n() \
++nsresult STDCALL nsXPTCStubBase::Stub##n() \
+ { \
+   PRUint32 *args, stackBytesToPop = 0; \
+   nsresult result = 0; \
+@@ -174,7 +180,7 @@
+ #endif /* __GNUC__ */
+ 
+ #define SENTINEL_ENTRY(n) \
+-nsresult __stdcall nsXPTCStubBase::Sentinel##n() \
++nsresult STDCALL nsXPTCStubBase::Sentinel##n() \
+ { \
+     NS_ASSERTION(0,"nsXPTCStubBase::Sentinel called"); \
+     return NS_ERROR_NOT_IMPLEMENTED; \
+--- a/js/src/jstracer.cpp
++++ b/js/src/jstracer.cpp
+@@ -50,6 +50,15 @@
+ #define alloca _alloca
+ #endif
+ #endif
++
++//MinGW
++#ifdef __GNUC__
++#ifndef HAVE_ALLOCA_H
++#include <malloc.h>
++#define alloca _alloca
++#endif
++#endif
++
+ #ifdef SOLARIS
+ #include <alloca.h>
+ #endif
+--- a/js/src/nanojit/Nativei386.cpp
++++ b/js/src/nanojit/Nativei386.cpp
+@@ -305,7 +305,7 @@
+ 	{
+ 		Register r;
+ 		RegAlloc &regs = _allocator;
+-	#ifdef WIN32
++	#if (defined WIN32) && (!defined __MINGW32__)
+ 		_asm
+ 		{
+ 			mov ecx, regs
+--- a/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
++++ b/modules/libpr0n/decoders/png/nsPNGDecoder.cpp
+@@ -58,6 +58,8 @@
+ #include "png.h"
+ 
+ #include "gfxPlatform.h"
++
++#include <limits.h>
+ 
+ static void PNGAPI info_callback(png_structp png_ptr, png_infop info_ptr);
+ static void PNGAPI row_callback(png_structp png_ptr, png_bytep new_row,
+--- a/widget/src/windows/nsWindow.h
++++ b/widget/src/windows/nsWindow.h
+@@ -88,9 +88,11 @@
+ #include "nsWinGesture.h"
+ 
+ // Text Services Framework support
+-#ifndef WINCE
++//#if ! ( defined WINCE  ||  defined __MINGW32__ )
++//#define NS_ENABLE_TSF
++//#endif //WINCE
++
+-#define NS_ENABLE_TSF
++//#define NS_ENABLE_TSF
+-#endif //WINCE
+ 
+ #define NSRGB_2_COLOREF(color) \
+             RGB(NS_GET_R(color),NS_GET_G(color),NS_GET_B(color))
+--- a/storage/src/mozStorageStatementParams.cpp
++++ b/storage/src/mozStorageStatementParams.cpp
+@@ -92,6 +92,6 @@
+   else if (JSVAL_IS_STRING(aId)) {
+     JSString *str = JSVAL_TO_STRING(aId);
+-    NS_ConvertUTF16toUTF8 name(::JS_GetStringChars(str),
+-                               ::JS_GetStringLength(str));
++    NS_ConvertUTF16toUTF8 name((const PRUnichar*)::JS_GetStringChars(str),
++                               (PRUint32)::JS_GetStringLength(str));
+ 
+     // check to see if there's a parameter with this name
+@@ -209,5 +209,5 @@
+     // Check to see if there's a parameter with this name, and if not, let
+     // the rest of the prototype chain be checked.
+-    NS_ConvertUTF16toUTF8 name(nameChars, nameLength);
++    NS_ConvertUTF16toUTF8 name((const PRUnichar*)nameChars, (PRUint32)nameLength);
+     nsresult rv = mStatement->GetParameterIndex(name, &idx);
+     if (NS_FAILED(rv)) {
+--- a/media/liboggz/include/oggz/config_win32.h
++++ a/media/liboggz/include/oggz/config_win32.h
+@@ -1,5 +1,8 @@
+ /* config.h.  Generated by configure.  */
+ /* config.h.in.  Generated from configure.ac by autoheader.  */
++
++#if ! ( defined LIBOGGZ_CONFIG_WIN32_H )
++#define LIBOGGZ_CONFIG_WIN32_H
+ 
+ /* Define to 1 if you have the <dlfcn.h> header file. */
+ #undef HAVE_DLFCN_H
+@@ -138,2 +141,4 @@
+ #define inline __inline // MSVC
+ #undef DEBUG
++ 
++#endif
+--- a/gfx/thebes/src/gfxWindowsFonts.cpp
++++ a/gfx/thebes/src/gfxWindowsFonts.cpp
+@@ -1130,6 +1130,6 @@
+         // delete it immediately it goes out of scope, not call
+         // gfxFont::Release which deals with shared, cached font instances.
+-        nsAutoPtr<gfxWindowsFont> tempFont =
+-            new gfxWindowsFont(GetFontEntry(), GetStyle(), CAIRO_ANTIALIAS_NONE);
++        nsAutoPtr<gfxWindowsFont> tempFont 
++           (new gfxWindowsFont(GetFontEntry(), GetStyle(), CAIRO_ANTIALIAS_NONE));
+         if (tempFont) {
+             return tempFont->Measure(aTextRun, aStart, aEnd,
+--- a/widget/src/windows/Makefile.in
++++ a/widget/src/windows/Makefile.in
+@@ -116,4 +116,8 @@
+ 	nsBidiKeyboard.cpp   \
+-	nsTextStore.cpp \
+ 	$(NULL)
++ifdef NS_ENABLE_TSF
++CPPSRCS += \
++	nsTextStore.cpp \
++	$(NULL)
++endif
+ endif
+--- a/security/nss/lib/freebl/config.mk
++++ b/security/nss/lib/freebl/config.mk
+@@ -85,7 +85,11 @
+ RESNAME = freebl.rc
+ 
+ ifndef WINCE
++ifdef NS_USE_GCC
++OS_LIBS += -lshell32
++else
+ OS_LIBS += shell32.lib
++endif
+ endif
+ 
+ ifdef NS_USE_GCC
+--- a/content/canvas/src/nsCanvasRenderingContext2D.cpp
++++ b/content/canvas/src/nsCanvasRenderingContext2D.cpp
+@@ -3868,17 +3868,17 @@
+                     return NS_ERROR_DOM_SYNTAX_ERR;
+ 
+-                if (JSVAL_IS_INT(vr))         ir = ToUint8(JSVAL_TO_INT(vr));
++                if (JSVAL_IS_INT(vr))         ir = ToUint8((PRInt32)JSVAL_TO_INT(vr));
+                 else if (JSVAL_IS_DOUBLE(vr)) ir = ToUint8(*JSVAL_TO_DOUBLE(vr));
+                 else return NS_ERROR_DOM_SYNTAX_ERR;
+ 
+-                if (JSVAL_IS_INT(vg))         ig = ToUint8(JSVAL_TO_INT(vg));
++                if (JSVAL_IS_INT(vg))         ig = ToUint8((PRInt32)JSVAL_TO_INT(vg));
+                 else if (JSVAL_IS_DOUBLE(vg)) ig = ToUint8(*JSVAL_TO_DOUBLE(vg));
+                 else return NS_ERROR_DOM_SYNTAX_ERR;
+ 
+-                if (JSVAL_IS_INT(vb))         ib = ToUint8(JSVAL_TO_INT(vb));
++                if (JSVAL_IS_INT(vb))         ib = ToUint8((PRInt32)JSVAL_TO_INT(vb));
+                 else if (JSVAL_IS_DOUBLE(vb)) ib = ToUint8(*JSVAL_TO_DOUBLE(vb));
+                 else return NS_ERROR_DOM_SYNTAX_ERR;
+ 
+-                if (JSVAL_IS_INT(va))         ia = ToUint8(JSVAL_TO_INT(va));
++                if (JSVAL_IS_INT(va))         ia = ToUint8((PRInt32)JSVAL_TO_INT(va));
+                 else if (JSVAL_IS_DOUBLE(va)) ia = ToUint8(*JSVAL_TO_DOUBLE(va));
+                 else return NS_ERROR_DOM_SYNTAX_ERR;
+--- a/widget/src/windows/nsIMM32Handler.cpp
++++ b/widget/src/windows/nsIMM32Handler.cpp
+@@ -1449,6 +1449,7 @@
+   // positioning:      2301 2301 2301
+   nsIntRect cursorInTopLevel;
++  nsIntRect tmp = nsIntRect(cursor, nsIntSize(0, 0));
+-  ResolveIMECaretPos(aWindow, nsIntRect(cursor, nsIntSize(0, 0)),
+-                     aWindow->GetTopLevelWindow(PR_FALSE), cursorInTopLevel);
++  ResolveIMECaretPos((nsIWidget*)aWindow, tmp,
++                     (nsIWidget*)aWindow->GetTopLevelWindow(PR_FALSE), cursorInTopLevel);
+   PRInt32 cursorXInChar = cursorInTopLevel.x - charAtPt.mReply.mRect.x;
+   int positioning = cursorXInChar * 4 / charAtPt.mReply.mRect.width;
