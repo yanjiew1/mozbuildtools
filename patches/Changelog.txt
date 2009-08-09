@@ -1,4 +1,7 @@
-﻿--- 2009-08-08 Jay Wang stu90206@gmail.com
+﻿--- 2009-08-09 Jay Wang stu90206@gmail.com
+ * 新增 3.6-1059e3342790.patch
+
+--- 2009-08-08 Jay Wang stu90206@gmail.com
  * 將最新 patch 檔放置於 /patch/mozilla.patch ，方便連結取用 
 
 --- 2009-01-20 Jay Wang stu90206@gmail.com

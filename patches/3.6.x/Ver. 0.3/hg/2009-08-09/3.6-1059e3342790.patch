@@ -3,8 +3,6 @@
 #
 # Patch: Version 0.3
 #
-# For: Rev. 1059e3342790 (2009-08-09)
-#
 --- a/js/src/configure.in
 +++ b/js/src/configure.in
 @@ -179,5 +179,5 @@
