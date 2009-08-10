@@ -2,6 +2,9 @@
   mozbuildtools 版本變更紀錄 (Changelog)
 ==========================================
 
+--- 2009-08-10 Jay Wang stu90206@gmail.com
+ * 更新 setup.bat
+
 --- 2009-08-08 Jay Wang stu90206@gmail.com
  * 使用 MinGW64 之 shlobj.h 替換原來的 shlobj.h
 
