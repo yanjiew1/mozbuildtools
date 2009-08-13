@@ -138,7 +138,6 @@ cd bin
 cd ..
 cd include
 copy ..\..\start-script\windows.h windows.h > nul 2> nul
-copy ..\..\start-script\shlobj.h shlobj.h > nul 2> nul
 cd ..
 cd ..
 
