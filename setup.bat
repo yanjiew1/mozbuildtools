@@ -64,22 +64,20 @@ mkdir download > nul 2> nul
 
 cd download
 
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bison-2.3-MSYS-1.0.11-1.tar.bz2 bison-2.3-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/cvs-1.11.22-MSYS-1.0.11-1-bin.tar.gz cvs-1.11.22-MSYS-1.0.11-1-bin.tar.gz
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bison-2.4.1-1-msys-1.0.11-bin.tar.lzma bison-2.4.1-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/cvs-1.12.13-1-msys-1.0.11-bin.tar.lzma cvs-1.12.13-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/coreutils-5.97-MSYS-1.0.11-snapshot.tar.bz2 coreutils-5.97-MSYS-1.0.11-snapshot.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/inetutils-1.3.2-40-MSYS-1.0.11-2-bin.tar.gz inetutils-1.3.2-40-MSYS-1.0.11-2-bin.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/perl-5.6.1-MSYS-1.0.11-1.tar.bz2 perl-5.6.1-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/crypt-1.1-1-MSYS-1.0.11-1.tar.bz2 crypt-1.1-1-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libiconv-1.11-1-bin.tar.bz2 libiconv-1.11-1-bin.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libiconv-1.11-1-dll.tar.bz2 libiconv-1.11-1-dll.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/flex-2.5.33-MSYS-1.0.11-1.tar.bz2 flex-2.5.33-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/bison-2.3-MSYS-1.0.11-1.tar.bz2 bison-2.3-MSYS-1.0.11-1.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/automake1.10-1.10-1-bin.tar.bz2 automake1.10-1.10-1-bin.tar.bz2
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/inetutils-1.5-1-msys-1.0.11-bin.tar.lzma inetutils-1.5-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/perl-5.6.1_2-1-msys-1.0.11-bin.tar.lzma perl-5.6.1_2-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/crypt-1.1_1-2-msys-1.0.11-bin.tar.lzma crypt-1.1_1-2-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libcrypt-1.1_1-2-msys-1.0.11-dll-0.tar.lzma libcrypt-1.1_1-2-msys-1.0.11-dll-0.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libiconv-1.13.1-1-msys-1.0.11-bin.tar.lzma libiconv-1.13.1-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/flex-2.5.35-1-msys-1.0.11-bin.tar.lzma flex-2.5.35-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/automake1.11-1.11-1-mingw32-bin.tar.lzma automake1.11-1.11-1-mingw32-bin.tar.lzma
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/msysCORE-1.0.11-bin.tar.gz msysCORE-1.0.11-bin.tar.gz
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/autoconf2.1-2.13-3-bin.tar.bz2  autoconf2.1-2.13-3-bin.tar.bz2 
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-bin.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool1.5-1.5.25a-1-dll.tar.bz2 libtool1.5-1.5.25a-1-bin.tar.bz2
-call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/regex-0.12-MSYS-1.0.11-1.tar.bz2 regex-0.12-MSYS-1.0.11-1.tar.bz2
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/autoconf2.1-2.13-4-mingw32-bin.tar.lzma  autoconf2.1-2.13-4-mingw32-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libtool-2.2.7a-1-mingw32-bin.tar.lzma libtool-2.2.7a-1-mingw32-bin.tar.lzma
+call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/libltdl-2.2.7a-1-mingw32-dll-7.tar.lzma libltdl-2.2.7a-1-mingw32-dll-7.tar.lzma
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/mingw32-make-3.81-20080326-3.tar.gz mingw32-make-3.81-20080326-3.tar.gz
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/gdb-6.8-mingw-3.tar.bz2 gdb-6.8-mingw-3.tar.bz2 
 call ..\start-script\get.bat http://nchc.dl.sourceforge.net/sourceforge/mingw/make-3.81-MSYS-1.0.11-2.tar.bz2 make-3.81-MSYS-1.0.11-2.tar.bz2
@@ -111,6 +109,7 @@ echo ___________________________________________________________________________
 echo         ½Ðµy«á...
 ..\tools\7za e -y ../download/*.bz2 > nul 2> nul
 ..\tools\7za e -y ../download/*.gz > nul 2> nul
+..\tools\7za e -y ../download/*.lzma > nul 2> nul
 
 cd ..
 cls
