@@ -2,6 +2,9 @@
   mozbuildtools 版本變更紀錄 (Changelog)
 ==========================================
 
+--- 2009-08-19 Jay Wang stu90206@gmail.com
+ * 大幅度更新 setup.bat 下載之連結
+
 --- 2009-08-18 Jay Wang stu90206@gmail.com
  * 更新 7-zip 至 9.06 beta
  * 大幅度更新 setup.bat 下載之連結
