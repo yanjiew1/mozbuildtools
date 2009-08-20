@@ -6,6 +6,7 @@
  * 更動 setup.bat 之 NSIS
  * 將 autoconf automake libtool 解壓縮至 MinGW
  * 將 MinGW 掛載至 /mingw
+ * 修正 automake 下載連結
 
 --- 2009-08-19 Jay Wang stu90206@gmail.com
  * 大幅度更新 setup.bat 下載之連結

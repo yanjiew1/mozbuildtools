@@ -73,7 +73,7 @@ call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS 
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS crypt/crypt-1.1_1-2/libcrypt-1.1_1-2-msys-1.0.11-dll-0.tar.lzma" libcrypt-1.1_1-2-msys-1.0.11-dll-0.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS libiconv/libiconv-1.13.1-1/libiconv-1.13.1-1-msys-1.0.11-bin.tar.lzma" libiconv-1.13.1-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS flex/flex-2.5.35-1/flex-2.5.35-1-msys-1.0.11-bin.tar.lzma" flex-2.5.35-1-msys-1.0.11-bin.tar.lzma
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW automake/automake1.11/automake-1.11-1.11-1/automake1.11-1.11-1-mingw32-bin.tar.lzma" automake1.11-1.11-1-mingw32-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW automake/automake1.11/automake1.11-1.11-1/automake1.11-1.11-1-mingw32-bin.tar.lzma" automake1.11-1.11-1-mingw32-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS Base System/Current Release_ MSYS-1.0.11/msysCORE-1.0.11-bin.tar.gz" msysCORE-1.0.11-bin.tar.gz
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW autoconf/autoconf2.1/autoconf2.1-2.13-4/autoconf2.1-2.13-4-mingw32-bin.tar.lzma"  autoconf2.1-2.13-4-mingw32-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW libtool/libtool-2.2.7a-1/libtool-2.2.7a-1-mingw32-bin.tar.lzma" libtool-2.2.7a-1-mingw32-bin.tar.lzma
