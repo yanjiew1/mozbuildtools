@@ -24,3 +24,6 @@ echo "set ROOT=`pwd -W`" >> start-cmd.bat
 cat start-cmd.bat.in >> start-cmd.bat
 tools/todos.exe start-cmd.bat
 
+echo >> msys/etc/fstab
+echo "`pwd -W`/mingw /mingw" >> msys/etc/fstab
+

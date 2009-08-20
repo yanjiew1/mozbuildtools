@@ -2,6 +2,11 @@
   mozbuildtools 版本變更紀錄 (Changelog)
 ==========================================
 
+--- 2009-08-20 Jay Wang stu90206@gmail.com
+ * 更動 setup.bat 之 NSIS
+ * 將 autoconf automake libtool 解壓縮至 MinGW
+ * 將 MinGW 掛載至 /mingw
+
 --- 2009-08-19 Jay Wang stu90206@gmail.com
  * 大幅度更新 setup.bat 下載之連結
 
