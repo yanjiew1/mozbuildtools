@@ -90,19 +90,19 @@ call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.33.7z nsisu-2.33.7z
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.0-mingw-core-cxx-r2.7z gcc-4.4.0-mingw-core-cxx-r2.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-runtime-20090418.7z mingw-runtime-20090418.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-w32api-20090418.7z mingw-w32api-20090418.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.1-mingw-core-cxx.7z gcc-4.4.1-mingw-core-cxx.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-runtime-20090818.7z mingw-runtime-20090818.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-w32api-20090818.7z mingw-w32api-20090818.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/binutils-2.19.1-mingw.7z binutils-2.19.1-mingw.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 set BINUTILS=binutils-2.19.1-mingw.7z
-set GCC=gcc-4.4.0-mingw-core-cxx-r2.7z
-set MINGWW32API=mingw-w32api-20090418.7z
+set GCC=gcc-4.4.1-mingw-core-cxx.7z
+set MINGWW32API=mingw-w32api-20090818.7z
 set AUTOMAKE=automake1.11-1.11-1-mingw32-bin.tar
 set AUTOCONF=autoconf2.1-2.13-4-mingw32-bin.tar
 set LIBTOOL=libltdl-2.2.7a-1-mingw32-dll-7.tar
 set LIBTOOL_BIN=libtool-2.2.7a-1-mingw32-bin.tar
-set MINGWRUNTIME=mingw-runtime-20090418.7z
+set MINGWRUNTIME=mingw-runtime-20090818.7z
 set GDB=gdb-6.8-mingw-3.tar
 set MAKE=mingw32-make-3.81-20080326-3.tar
 
