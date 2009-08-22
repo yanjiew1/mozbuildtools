@@ -5,6 +5,7 @@
 --- 2009-08-22 Jay Wang stu90206@gmail.com
  * 新增修改過的 shlobj.h 和 windef.h
  * 更新修改過的 windows.h  
+ * 釋出 mozbuildtools 1.1 rc
 
 --- 2009-08-21 Jay Wang stu90206@gmail.com
  * 更新 GCC 至 4.4.1

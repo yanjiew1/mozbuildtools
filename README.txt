@@ -8,7 +8,7 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 
 ＊ 版本說明: 
   - 版本: 1.1 rc
-  - 實驗 GCC 4.4.0
+  - 實驗 GCC 4.4.1
   - 完整變動報告請看 Changelog.txt
 
 ＊ Patch 檔版本需求: 0.3 以上
@@ -31,8 +31,6 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
 ＊ 注意事項:
   - 此程式不能安裝在含有空白字元的路徑
   - 如使用 Vista 以上的作業系統，請從「開始」->「所有程式」->「附屬應用程式」->「命令提示字元」按下右鍵->「以系統管理員身份執行」或選擇關閉 UAC。
-  - 編譯好執行的檔案後，記得將 NSPR、moztools 的 DLL 檔跟 Firefox 放在一起才能運作。
-    (使用新版以上的 patch 會自動修正)
 
 ＊ 如何編譯:
   1. 先撰寫好 .mozconfig
