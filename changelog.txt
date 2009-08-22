@@ -2,6 +2,10 @@
   mozbuildtools 版本變更紀錄 (Changelog)
 ==========================================
 
+--- 2009-08-22 Jay Wang stu90206@gmail.com
+ * 新增修改過的 shlobj.h 和 windef.h
+ * 更新修改過的 windows.h  
+
 --- 2009-08-21 Jay Wang stu90206@gmail.com
  * 更新 GCC 至 4.4.1
  * 更新 w32api 至 20090818
