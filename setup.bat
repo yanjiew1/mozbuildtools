@@ -65,7 +65,7 @@ mkdir download > nul 2> nul
 cd download
 
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS zlib/zlib-1.2.3-1/zlib-1.2.3-1-msys-1.0.11-dll.tar.gz" zlib-1.2.3-1-msys-1.0.11-dll.tar.gz
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS regex/regex-1.20090805-1/libregex-0.12-1-msys-1.0.11-dll-0.tar.lzma" libregex-0.12-1-msys-1.0.11-dll-0.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS regex/regex-1.20090805-1/libregex-1.20090805-1-msys-1.0.11-dll-1.tar.lzma" libregex-1.20090805-1-msys-1.0.11-dll-1.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS findutils/findutils-4.4.2-1/findutils-4.4.2-1-msys-1.0.11-bin.tar.lzma" findutils-4.4.2-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS findutils/findutils-4.4.2-1/locate-4.4.2-1-msys-1.0.11-bin.tar.lzma" locate-4.4.2-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS gawk/gawk-3.1.7-1/gawk-3.1.7-1-msys-1.0.11-bin.tar.lzma" gawk-3.1.7-1-msys-1.0.11-bin.tar.lzma
