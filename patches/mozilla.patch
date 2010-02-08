@@ -353,8 +353,8 @@
  
  ifdef ENABLE_TESTS
  ifndef MOZ_ENABLE_LIBXUL
---- a/build/autoconf/make-makefile	2010-01-21 11:29:56 +0800
-+++ b/build/autoconf/make-makefile	2010-02-08 13:02:58 +0800
+--- a/build/autoconf/make-makefile
++++ b/build/autoconf/make-makefile
 @@ -45,7 +45,7 @@
  #$debug = 1;
  
