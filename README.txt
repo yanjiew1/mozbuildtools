@@ -7,8 +7,8 @@ mozbuildtools 是一項計畫，實現使用 MinGW 在 Windows 編譯 Mozilla。
       且使用 MinGW 編譯的版本有一些問題待解決。
 
 ＊ 版本說明: 
-  - 版本: 1.1 rc
-  - 實驗 GCC 4.4.1
+  - 版本: 1.1.1
+  - 更新軟體
   - 完整變動報告請看 Changelog.txt
 
 ＊ Patch 檔版本需求: 0.3 以上

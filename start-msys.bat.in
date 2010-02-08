@@ -17,6 +17,6 @@ set C_INCLUDE_PATH=/mingw/include
 set CPLUS_INCLUDE_PATH=/mingw/include
 set LIBRARY_PATH=/mingw/lib
 cd msys
-echo   Mozbuildtools Version: 1.1 RC
+echo   Mozbuildtools Version: 1.1.1
 echo =====================================
 bin\bash --login -i

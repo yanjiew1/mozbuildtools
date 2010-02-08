@@ -1,6 +1,6 @@
 @echo off
-set VERSION=1.1 RC
-rem Copyright (c) 2008 ~ 2009, Jay Wang
+set VERSION=1.2 beta
+rem Copyright (c) 2008 ~ 2010, Jay Wang
 rem All rights reserved.
 rem 
 rem Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -64,9 +64,25 @@ mkdir download > nul 2> nul
 
 cd download
 
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS zlib/zlib-1.2.3-1/zlib-1.2.3-1-msys-1.0.11-dll.tar.gz" zlib-1.2.3-1-msys-1.0.11-dll.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS regex/regex-1.20090805-1/libregex-0.12-1-msys-1.0.11-dll-0.tar.lzma" libregex-0.12-1-msys-1.0.11-dll-0.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS findutils/findutils-4.4.2-1/findutils-4.4.2-1-msys-1.0.11-bin.tar.lzma" findutils-4.4.2-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS findutils/findutils-4.4.2-1/locate-4.4.2-1-msys-1.0.11-bin.tar.lzma" locate-4.4.2-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS gawk/gawk-3.1.7-1/gawk-3.1.7-1-msys-1.0.11-bin.tar.lzma" gawk-3.1.7-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS file/file-5.03-1/file-5.03-1-msys-1.0.11-bin.tar.lzma" file-5.03-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS file/file-5.03-1/libmagic-5.03-1-msys-1.0.11-dll-1.tar.lzma" libmagic-5.03-1-msys-1.0.11-dll-1.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS sed/sed-4.2.1-1/sed-4.2.1-1-msys-1.0.11-bin.tar.lzma" sed-4.2.1-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS grep/grep-2.5.4-1/grep-2.5.4-1-msys-1.0.11-bin.tar.lzma" grep-2.5.4-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS m4/m4-1.4.13-1/m4-1.4.13-1-msys-1.0.11-bin.tar.lzma" m4-1.4.13-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS diffutils/diffutils-2.8.7.20071206cvs-2/diffutils-2.8.7.20071206cvs-2-msys-1.0.11-bin.tar.lzma" diffutils-2.8.7.20071206cvs-2-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS patch/patch-2.5.9-1/patch-2.5.9-1-msys-1.0.11-bin.tar.lzma" patch-2.5.9-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS gzip/gzip-1.3.12-1/gzip-1.3.12-1-msys-1.0.11-bin.tar.lzma" gzip-1.3.12-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS bzip2/bzip2-1.0.5-1/bzip2-1.0.5-1-msys-1.0.11-bin.tar.gz" bzip2-1.0.5-1-msys-1.0.11-bin.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS bzip2/bzip2-1.0.5-1/libbz2-1.0.5-1-msys-1.0.11-dll-1.tar.gz" libbz2-1.0.5-1-msys-1.0.11-dll-1.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS rxvt/rxvt-2.7.10.20050409-1/rxvt-2.7.10.20050409-1-msys-1.0.11-bin.tar.lzma" rxvt-2.7.10.20050409-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS bison/bison-2.4.1-1/bison-2.4.1-1-msys-1.0.11-bin.tar.lzma" bison-2.4.1-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS cvs/cvs-1.12.13-1/cvs-1.12.13-1-msys-1.0.11-bin.tar.lzma" cvs-1.12.13-1-msys-1.0.11-bin.tar.lzma
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS Base System/Current Release_ MSYS-1.0.11/coreutils-5.97-MSYS-1.0.11-snapshot.tar.bz2" coreutils-5.97-MSYS-1.0.11-snapshot.tar.bz2
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS coreutils/coreutils-5.97-2/coreutils-5.97-2-msys-1.0.11-bin.tar.lzma" coreutils-5.97-2-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS inetutils/inetutils-1.5-1/inetutils-1.5-1-msys-1.0.11-bin.tar.lzma" inetutils-1.5-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS perl/perl-5.6.1_2-1/perl-5.6.1_2-1-msys-1.0.11-bin.tar.lzma" perl-5.6.1_2-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS crypt/crypt-1.1_1-2/crypt-1.1_1-2-msys-1.0.11-bin.tar.lzma" crypt-1.1_1-2-msys-1.0.11-bin.tar.lzma
@@ -74,13 +90,20 @@ call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS 
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS libiconv/libiconv-1.13.1-1/libiconv-1.13.1-1-msys-1.0.11-bin.tar.lzma" libiconv-1.13.1-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS flex/flex-2.5.35-1/flex-2.5.35-1-msys-1.0.11-bin.tar.lzma" flex-2.5.35-1-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW automake/automake1.11/automake1.11-1.11-1/automake1.11-1.11-1-mingw32-bin.tar.lzma" automake1.11-1.11-1-mingw32-bin.tar.lzma
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS Base System/Current Release_ MSYS-1.0.11/msysCORE-1.0.11-bin.tar.gz" msysCORE-1.0.11-bin.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS Base System/msys-1.0.12/msysCORE-1.0.12-1-msys-1.0.12-bin.tar.lzma" msysCORE-1.0.12-1-msys-1.0.12-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW autoconf/autoconf2.1/autoconf2.1-2.13-4/autoconf2.1-2.13-4-mingw32-bin.tar.lzma"  autoconf2.1-2.13-4-mingw32-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW libtool/libtool-2.2.7a-1/libtool-2.2.7a-1-mingw32-bin.tar.lzma" libtool-2.2.7a-1-mingw32-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW libtool/libtool-2.2.7a-1/libltdl-2.2.7a-1-mingw32-dll-7.tar.lzma" libltdl-2.2.7a-1-mingw32-dll-7.tar.lzma
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU Make/Current Release_ mingw32-make-3.81-20080326/mingw32-make-3.81-20080326-3.tar.gz" mingw32-make-3.81-20080326-3.tar.gz
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU Source-Level Debugger/Release Candidate_ GDB 6.8-3/gdb-6.8-mingw-3.tar.bz2" gdb-6.8-mingw-3.tar.bz2 
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS Base System/Current Release_ MSYS-1.0.11/make-3.81-MSYS-1.0.11-2.tar.bz2" make-3.81-MSYS-1.0.11-2.tar.bz2
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW Runtime/mingwrt-3.17/mingwrt-3.17-mingw32-dll.tar.gz" mingwrt-3.17-mingw32-dll.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW Runtime/mingwrt-3.17/mingwrt-3.17-mingw32-dev.tar.gz" mingwrt-3.17-mingw32-dev.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS bash/bash-3.1.17-2/bash-3.1.17-2-msys-1.0.11-bin.tar.lzma" bash-3.1.17-2-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU Binutils/binutils-2.20/binutils-2.20-1-mingw32-bin.tar.gz" binutils-2.20-1-mingw32-bin.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS w32api/w32api-3.14-3/w32api-3.14-3-msys-1.0.12-dev.tar.lzma" w32api-3.14-3-msys-1.0.12-dev.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW Runtime/mingwrt-3.17/mingwrt-3.17-mingw32-dll.tar.gz" mingwrt-3.17-mingw32-dev.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW libtool/libtool-2.2.7a-1/libltdl-2.2.7a-1-mingw32-dll-7.tar.lzma" libltdl-2.2.7a-1-mingw32-dll-7.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW make/make-3.81-20090914-mingw32/make-3.81-20090914-mingw32-bin.tar.gz" make-3.81-20090914-mingw32-bin.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU Source-Level Debugger/GDB-7.0.50.20100202/gdb-7.0.50.20100202-mingw32-bin.tar.gz" gdb-7.0.50.20100202-mingw32-bin.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS make/make-3.81-2/make-3.81-2-msys-1.0.11-bin.tar.lzma" make-3.81-2-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-bin.zip" tar-1.13-1-bin.zip
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-dep.zip" tar-1.13-1-dep.zip
 call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config_0.23-3_win32.zip pkg-config_0.23-3_win32.zip
@@ -91,20 +114,18 @@ call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.3
 call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.1-mingw-core-cxx.7z gcc-4.4.1-mingw-core-cxx.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-runtime-20090818.7z mingw-runtime-20090818.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/mingw-w32api-20090818.7z mingw-w32api-20090818.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/binutils-2.19.1-mingw.7z binutils-2.19.1-mingw.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
-set BINUTILS=binutils-2.19.1-mingw.7z
+set BINUTILS=binutils-2.20-1-mingw32-bin.tar
 set GCC=gcc-4.4.1-mingw-core-cxx.7z
-set MINGWW32API=mingw-w32api-20090818.7z
+set MINGWW32API=w32api-3.14-3-msys-1.0.12-dev.tar
 set AUTOMAKE=automake1.11-1.11-1-mingw32-bin.tar
 set AUTOCONF=autoconf2.1-2.13-4-mingw32-bin.tar
 set LIBTOOL=libltdl-2.2.7a-1-mingw32-dll-7.tar
 set LIBTOOL_BIN=libtool-2.2.7a-1-mingw32-bin.tar
-set MINGWRUNTIME=mingw-runtime-20090818.7z
-set GDB=gdb-6.8-mingw-3.tar
-set MAKE=mingw32-make-3.81-20080326-3.tar
+set MINGWRUNTIME_DLL=mingwrt-3.17-mingw32-dll.tar
+set MINGWRUNTIME_DEV=mingwrt-3.17-mingw32-dev.tar
+set GDB=gdb-7.0.50.20100202-mingw32-bin.tar
+set MAKE=make-3.81-20090914-mingw32-bin.tar
 
 
 cls
@@ -130,7 +151,8 @@ mkdir mingw > nul 2> nul
 cd mingw
 move ..\download\%BINUTILS% %BINUTILS% > nul 2> nul
 move ..\download\%MINGWW32API% %MINGWW32API% > nul 2> nul
-move ..\download\%MINGWRUNTIME% %MINGWRUNTIME% > nul 2> nul
+move ..\download\%MINGWRUNTIME_DLL% %MINGWRUNTIME_DLL% > nul 2> nul
+move ..\download\%MINGWRUNTIME_DEV% %MINGWRUNTIME_DEV% > nul 2> nul
 move ..\download\%GCC% %GCC% > nul 2> nul
 move ..\download\%MAKE% %MAKE% > nul 2> nul
 move ..\download\%GDB% %GDB% > nul 2> nul
@@ -144,9 +166,10 @@ move ..\download\%LIBTOOL_BIN% %LIBTOOL_BIN% > nul 2> nul
 cd bin
 cd ..
 cd include
-copy ..\..\start-script\windows.h windows.h > nul 2> nul
-copy ..\..\start-script\shlobj.h shlobj.h > nul 2> nul
-copy ..\..\start-script\windef.h windef.h > nul 2> nul
+cd w32api
+copy ..\..\..\start-script\windows.h windows.h > nul 2> nul
+copy ..\..\..\start-script\windef.h windef.h > nul 2> nul
+cd ..
 cd ..
 cd ..
 
@@ -217,7 +240,8 @@ move nsisu-2.33.7z download\nsisu-2.33.7z > nul 2> nul
 cd mingw
 move %BINUTILS% ..\download\%BINUTILS% > nul 2> nul
 move %MINGWW32API% ..\download\%MINGWW32API% > nul 2> nul
-move %MINGWRUNTIME% ..\download\%MINGWRUNTIME% > nul 2> nul
+move %MINGWRUNTIME_DLL% ..\download\%MINGWRUNTIME_DLL% > nul 2> nul
+move %MINGWRUNTIME_DEV% ..\download\%MINGWRUNTIME_DEV% > nul 2> nul
 move %GCC% ..\download\%GCC% > nul 2> nul
 move %MAKE% ..\download\%MAKE% > nul 2> nul
 move %GDB% ..\download\%GDB% > nul 2> nul

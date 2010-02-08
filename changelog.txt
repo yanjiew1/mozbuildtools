@@ -2,6 +2,10 @@
   mozbuildtools 版本變更紀錄 (Changelog)
 ==========================================
 
+--- 2010-02-08 Jay Wang stu90206@gmail.com
+ * 更新版本號到 1.1.1
+ * 更新MSYS與MinGW軟體
+
 --- 2009-08-22 Jay Wang stu90206@gmail.com
  * 新增修改過的 shlobj.h 和 windef.h
  * 更新修改過的 windows.h  
