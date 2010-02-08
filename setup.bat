@@ -1,5 +1,5 @@
 @echo off
-set VERSION=1.2 beta
+set VERSION=1.1.1
 rem Copyright (c) 2008 ~ 2010, Jay Wang
 rem All rights reserved.
 rem 
