@@ -75,18 +75,18 @@ ac_add_options  --enable-strip
 ac_add_options  --disable-necko-wifi
 
 # 使用 -w 隱藏警告訊息，以減少訊息輸出，減少等待終端機的輸出
-CFLAGS="-w"
-CXXFLAGS="-w"
-CPPFLAGS="-w"
+export CFLAGS="-w"
+export CXXFLAGS="-w"
+export CPPFLAGS="-w"
 
 # 設定 MinGW 環境
-CC="gcc -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
-CXX="g++ -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
-CPP="cpp -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
-CXXCPP="cpp -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
-AS=as
-LD=ld
-AR=ar
-STRIP=strip
-WINDRES=windres
+export CC="gcc -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
+export CXX="g++ -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
+export CPP="cpp -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
+export CXXCPP="cpp -D_WIN32_IE=0x0800 -D_WIN32_WINNT=0x0601"
+export AS=as
+export LD=ld
+export AR=ar
+export STRIP=strip
+export WINDRES=windres
 
