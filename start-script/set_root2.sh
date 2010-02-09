@@ -18,7 +18,7 @@ cat start-msys.bat.in >> start-msys.bat
 tools/todos.exe start-msys.bat
 echo "@echo off" > start-msys-rxvt.bat
 echo "set ROOT=`pwd -W`" >> start-msys-rxvt.bat
-echo "set VROOT=`pwd`" >> start-msys.bat
+echo "set VROOT=`pwd`" >> start-msys-rxvt.bat
 cat start-msys-rxvt.bat.in >> start-msys-rxvt.bat
 tools/todos.exe start-msys-rxvt.bat
 echo "@echo off" > start-cmd.bat
