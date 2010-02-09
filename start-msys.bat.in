@@ -13,9 +13,9 @@ set MOZ_TOOLS=%VROOT%/moztools
 set PATH=%ROOT%\NSIS;%ROOT%\mingw\bin;%ROOT%\scripts;%ROOT%\msys\bin;%ROOT%\msys\usr\bin;%ROOT%\msys\usr\usr\local\bin;%PATH%;%ROOT%\Python25;%ROOT%\tools;%ROOT%\moztools\bin;%ROOT%\Mercurial
 set CVSROOT=:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
 set HOME=%ROOT%
-set C_INCLUDE_PATH=/mingw/include
-set CPLUS_INCLUDE_PATH=/mingw/include
-set LIBRARY_PATH=/mingw/lib
+set C_INCLUDE_PATH=/mingw/include:/mingw/include/w32api
+set CPLUS_INCLUDE_PATH=/mingw/include:/mingw/include/w32api
+set LIBRARY_PATH=/mingw/lib:/mingw/lib/w32api
 cd msys
 echo   Mozbuildtools Version: 1.1.1
 echo =====================================
