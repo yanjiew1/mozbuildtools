@@ -133,9 +133,9 @@
          GLIB_LIBS="${_GLIB_PREFIX_DIR}/lib/glib-1.2_s.lib"
      elif test -f "${_GLIB_PREFIX_DIR}/lib/glib-1.2.lib"; then
          GLIB_LIBS="${_GLIB_PREFIX_DIR}/lib/glib-1.2.lib"
-+    elif test -f "${_GLIB_PREFIX_DIR}/lib/glib-2.0.lib";
++    elif test -f "${_GLIB_PREFIX_DIR}/lib/glib-2.0.lib"; then
 +        GLIB_LIBS="${_GLIB_PREFIX_DIR}/lib/glib-2.0.lib"
-+    elif test -f "${_GLIB_PREFIX_DIR}/lib/libglib-2.0.a";
++    elif test -f "${_GLIB_PREFIX_DIR}/lib/libglib-2.0.a"; then
 +        GLIB_LIBS="${_GLIB_PREFIX_DIR}/lib/libglib-2.0.a"
      else
 -        AC_MSG_ERROR([Cannot find $_GLIB_PREFIX_DIR/lib/glib-1.2.lib or $_GLIB_PREFIX_DIR/lib/glib-1.2_s.lib])
