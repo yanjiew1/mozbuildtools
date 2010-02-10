@@ -49,13 +49,12 @@ rmdir /S /Q moztools > nul 2> nul
 rmdir /S /Q python25 > nul 2> nul
 rmdir /S /Q buildtools > nul 2> nul
 rmdir /S /Q {tmp} > nul 2> nul
+rmdir /S /Q libs > nul 2> nul
 del start-msys.bat > nul 2> nul
 del start-cmd.bat > nul 2> nul
 del start-msys-rxvt.bat > nul 2> nul
 del install-python.bat > nul 2> nul
-del tools\fromdos.exe > nul 2> nul
 del tools\innounp.exe > nul 2> nul
-del tools\todos.exe > nul 2> nul
 del tools\unzip.exe > nul 2> nul
 del tools\upx.exe > nul 2> nul
 del tools\xdelta.exe > nul 2> nul
@@ -109,12 +108,12 @@ call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/ta
 call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.3.1.exe Mercurial-1.3.1.exe
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.33.7z nsisu-2.33.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.1-mingw-core-cxx.7z gcc-4.4.1-mingw-core-cxx.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.3-core-cxx-mingw.7z gcc-4.4.3-core-cxx-mingw.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/libs-v1.7z libs-v1.7z
 
 set BINUTILS=binutils-2.20-1-mingw32-bin.tar
-set GCC=gcc-4.4.1-mingw-core-cxx.7z
+set GCC=gcc-4.4.3-core-cxx-mingw.7z
 set MINGWW32API=w32api-3.14-3-msys-1.0.12-dev.tar
 set AUTOMAKE=automake1.11-1.11-1-mingw32-bin.tar
 set AUTOCONF=autoconf2.1-2.13-4-mingw32-bin.tar
@@ -174,7 +173,7 @@ cd ..
 echo         正在設定所需的函式庫...
 mkdir libs
 cd libs
-7za.exe x -y ..\download\libs-v1.7z > nul 2> nul
+..\tools\7za.exe x -y ..\download\libs-v1.7z > nul 2> nul
 cd ..
 
 rem echo         正在設定 Moztools...
