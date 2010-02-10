@@ -13,10 +13,12 @@ set MOZ_TOOLS=%VROOT%/libs
 set PATH=%ROOT%\NSIS;%ROOT%\mingw\bin;%ROOT%\scripts;%ROOT%\msys\bin;%ROOT%\msys\usr\bin;%ROOT%\msys\usr\usr\local\bin;%PATH%;%ROOT%\Python25;%ROOT%\tools;%ROOT%\moztools\bin;%ROOT%\Mercurial;%ROOT%\libs\bin
 set CVSROOT=:pserver:anonymous@cvs-mirror.mozilla.org:/cvsroot
 set HOME=%ROOT%
-set C_INCLUDE_PATH=/mingw/include:/mingw/include/w32api
-set CPLUS_INCLUDE_PATH=/mingw/include:/mingw/include/w32api
-set LIBRARY_PATH=/mingw/lib:/mingw/lib/w32api
+set C_INCLUDE_PATH=/mingw/include:/mingw/include/w32api:%VROOT%/libs/include
+set CPLUS_INCLUDE_PATH=/mingw/include:/mingw/include/w32api:%VROOT%/libs/include
+set LIBRARY_PATH=/mingw/lib:/mingw/lib/w32api:%VROOT%/libs/lib
+set PKG_CONFIG_PATH=%VROOT%/libs/lib/pkgconfig
+
 cd msys
-echo   Mozbuildtools Version: 1.1.1
+echo   Mozbuildtools Version: 1.2
 echo =====================================
 cmd

@@ -1,4 +1,8 @@
-﻿--- 2010-02-08 Jay Wang stu90206@gmail.com
+﻿--- 2010-02-10 Jay Wang stu90206@gmail.com
+ * 新增 Ver. 0.4 For 1.2
+ * 新增 3.6.patch
+
+--- 2010-02-08 Jay Wang stu90206@gmail.com
  * 新增 3.6-final.patch
 
 --- 2009-08-09 Jay Wang stu90206@gmail.com

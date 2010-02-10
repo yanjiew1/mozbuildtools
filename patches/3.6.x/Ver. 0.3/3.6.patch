@@ -1,5 +1,5 @@
 #
-# Patch: Version 0.4 [Recommend] mozbuildtools 1.2
+# Patch: Version 0.3 [Recommend] mozbuildtools 1.1.1
 #
 # For: Mozilla Firefox 3.6 ( Gecko 1.9.2 )
 #
@@ -462,10 +462,12 @@
  
 +endif
  CSRCS		+= \
- 		mmxidct.c \
+-		mmxidct.c \
  		mmxfrag.c \
- 		mmxstate.c \
+-		mmxstate.c \
  		x86state.c \
++		mmxstate.c \
++		mmxidct.c \
  		$(NULL)
  endif
 -endif

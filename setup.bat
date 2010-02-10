@@ -1,5 +1,5 @@
 @echo off
-set VERSION=1.1.1
+set VERSION=1.2
 rem Copyright (c) 2008 ~ 2010, Jay Wang
 rem All rights reserved.
 rem 
@@ -63,6 +63,15 @@ mkdir download > nul 2> nul
 
 cd download
 
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS texinfo/texinfo-4.13a-1/texinfo-4.13a-1-msys-1.0.11-bin.tar.lzma" texinfo-4.13a-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS automake/automake-1.11-1/automake-1.11-1-msys-1.0.11-bin.tar.lzma" automake-1.11-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS autoconf/autoconf-2.63-1/autoconf-2.63-1-msys-1.0.11-bin.tar.lzma" autoconf-2.63-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS inetutils/inetutils-1.5-1/inetutils-1.5-1-msys-1.0.11-bin.tar.lzma" inetutils-1.5-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS less/less-436-1/less-436-1-msys-1.0.11-bin.tar.lzma" less-436-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS vim/vim-7.2-1/vim-7.2-1-msys-1.0.11-bin.tar.lzma" vim-7.2-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS tar/tar-1.22-1/tar-1.22-1-msys-1.0.11-bin.tar.lzma" tar-1.22-1-msys-1.0.11-bin.tar.lzma
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS xz/xz-4.999.9beta_20091209-1/liblzma-4.999.9beta_20091209-1-msys-1.0.12-dll-1.tar.gz" liblzma-4.999.9beta_20091209-1-msys-1.0.12-dll-1.tar.gz
+call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS xz/xz-4.999.9beta_20091209-1/xz-4.999.9beta_20091209-1-msys-1.0.12-bin.tar.gz" xz-4.999.9beta_20091209-1-msys-1.0.12-bin.tar.gz
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS zlib/zlib-1.2.3-1/zlib-1.2.3-1-msys-1.0.11-dll.tar.gz" zlib-1.2.3-1-msys-1.0.11-dll.tar.gz
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS regex/regex-1.20090805-1/libregex-1.20090805-1-msys-1.0.11-dll-1.tar.lzma" libregex-1.20090805-1-msys-1.0.11-dll-1.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS findutils/findutils-4.4.2-1/findutils-4.4.2-1-msys-1.0.11-bin.tar.lzma" findutils-4.4.2-1-msys-1.0.11-bin.tar.lzma
@@ -103,8 +112,8 @@ call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MinGW make/make-3.81-20090914-mingw32/make-3.81-20090914-mingw32-bin.tar.gz" make-3.81-20090914-mingw32-bin.tar.gz
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU Source-Level Debugger/GDB-7.0.50.20100202/gdb-7.0.50.20100202-mingw32-bin.tar.gz" gdb-7.0.50.20100202-mingw32-bin.tar.gz
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS make/make-3.81-2/make-3.81-2-msys-1.0.11-bin.tar.lzma" make-3.81-2-msys-1.0.11-bin.tar.lzma
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-bin.zip" tar-1.13-1-bin.zip
-call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-dep.zip" tar-1.13-1-dep.zip
+rem call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-bin.zip" tar-1.13-1-bin.zip
+rem call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-dep.zip" tar-1.13-1-dep.zip
 call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.3.1.exe Mercurial-1.3.1.exe
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.33.7z nsisu-2.33.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z

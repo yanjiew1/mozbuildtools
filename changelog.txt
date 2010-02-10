@@ -5,6 +5,8 @@
 --- 2010-02-10 Jay Wang stu90206@gmail.com
  * 將 glib、gettext、pkg-config 整合變成 libs
  * 刪除 moztools
+ * 新增一些常用的工具
+ * 修改版本號到 1.2
 
 --- 2010-02-08 Jay Wang stu90206@gmail.com
  * 更新版本號到 1.1.1
