@@ -7,6 +7,7 @@
  * 刪除 moztools
  * 新增一些常用的工具
  * 修改版本號到 1.2
+ * 更新 Mercurial 到 1.4.2
 
 --- 2010-02-08 Jay Wang stu90206@gmail.com
  * 更新版本號到 1.1.1

@@ -114,7 +114,7 @@ call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU S
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS make/make-3.81-2/make-3.81-2-msys-1.0.11-bin.tar.lzma" make-3.81-2-msys-1.0.11-bin.tar.lzma
 rem call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-bin.zip" tar-1.13-1-bin.zip
 rem call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-dep.zip" tar-1.13-1-dep.zip
-call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.3.1.exe Mercurial-1.3.1.exe
+call ..\start-script\get.bat http://bitbucket.org/tortoisehg/thg-winbuild/downloads/mercurial-1.4.3.exe mercurial-1.4.3.exe
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.33.7z nsisu-2.33.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.3-core-cxx-mingw.7z gcc-4.4.3-core-cxx-mingw.7z
@@ -216,7 +216,7 @@ cd NSIS
 cd ..
 
 echo         正在設定 Mercurial...
-tools\innounp.exe -x download\Mercurial-1.3.1.exe > nul 2> nul
+tools\innounp.exe -x download\mercurial-1.4.3.exe > nul 2> nul
 rename {app} Mercurial > nul 2> nul
 move install_script.iss Mercurial\install_script.iss > nul 2> nul
 
