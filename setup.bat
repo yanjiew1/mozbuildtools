@@ -106,15 +106,13 @@ call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/GNU S
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/mingw/MSYS make/make-3.81-2/make-3.81-2-msys-1.0.11-bin.tar.lzma" make-3.81-2-msys-1.0.11-bin.tar.lzma
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-bin.zip" tar-1.13-1-bin.zip
 call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-dep.zip" tar-1.13-1-dep.zip
-call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/pkg-config_0.23-3_win32.zip pkg-config_0.23-3_win32.zip
-call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies/gettext-runtime-0.17-1.zip gettext-runtime-0.17-1.zip
-call ..\start-script\get.bat http://ftp.gnome.org/pub/gnome/binaries/win32/glib/2.20/glib_2.20.4-1_win32.zip glib_2.20.4-1_win32.zip
 call ..\start-script\get.bat http://mercurial.berkwood.com/binaries/Mercurial-1.3.1.exe Mercurial-1.3.1.exe
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.33.7z nsisu-2.33.7z
-call ..\start-script\get.bat http://ftp.mozilla.org/pub/mozilla.org/mozilla/source/wintools.zip wintools.zip
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.1-mingw-core-cxx.7z gcc-4.4.1-mingw-core-cxx.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/libs-v1.7z libs-v1.7z
+
 set BINUTILS=binutils-2.20-1-mingw32-bin.tar
 set GCC=gcc-4.4.1-mingw-core-cxx.7z
 set MINGWW32API=w32api-3.14-3-msys-1.0.12-dev.tar
@@ -173,28 +171,34 @@ cd ..
 cd ..
 cd ..
 
-echo         正在設定 Moztools...
-move download\wintools.zip wintools.zip > nul 2> nul
-tools\7za x wintools.zip > nul 2> nul
-mkdir moztools > nul 2> nul
-cd moztools
-mkdir bin > nul 2> nul
-copy ..\buildtools\windows\bin\x86\*.dll bin > nul 2> nul
-copy ..\buildtools\windows\bin\x86\*.exe bin > nul 2> nul
-mkdir include > nul 2> nul
-copy ..\buildtools\windows\include\*.h include > nul 2> nul
-..\tools\fromdos.exe include\*.h > nul 2> nul
-cd include
-mkdir libIDL > nul 2> nul
-copy ..\..\buildtools\windows\include\libIDL\*.h libIDL > nul 2> nul
-..\..\tools\fromdos.exe libIDL\*.h > nul 2> nul
+echo         正在設定所需的函式庫...
+mkdir libs
+cd libs
+7za.exe x -y ..\download\libs-v1.7z > nul 2> nul
 cd ..
-mkdir lib > nul 2> nul
-copy ..\buildtools\windows\lib\*.lib lib > nul 2> nul
-cd ..
-move moztools\bin\nsinstall.exe moztools\bin\nsinstall.exe.orig > nul 2> nul
-tools\xdelta -d -s moztools\bin\nsinstall.exe.orig start-script\nsinstall.xdelta moztools\bin\nsinstall.exe > nul 2> nul
-del moztools\bin\nsinstall.exe.orig > nul 2> nul
+
+rem echo         正在設定 Moztools...
+rem move download\wintools.zip wintools.zip > nul 2> nul
+rem tools\7za x wintools.zip > nul 2> nul
+rem mkdir moztools > nul 2> nul
+rem cd moztools
+rem mkdir bin > nul 2> nul
+rem copy ..\buildtools\windows\bin\x86\*.dll bin > nul 2> nul
+rem copy ..\buildtools\windows\bin\x86\*.exe bin > nul 2> nul
+rem mkdir include > nul 2> nul
+rem copy ..\buildtools\windows\include\*.h include > nul 2> nul
+rem ..\tools\fromdos.exe include\*.h > nul 2> nul
+rem cd include
+rem mkdir libIDL > nul 2> nul
+rem copy ..\..\buildtools\windows\include\libIDL\*.h libIDL > nul 2> nul
+rem ..\..\tools\fromdos.exe libIDL\*.h > nul 2> nul
+rem cd ..
+rem mkdir lib > nul 2> nul
+rem copy ..\buildtools\windows\lib\*.lib lib > nul 2> nul
+rem cd ..
+rem move moztools\bin\nsinstall.exe moztools\bin\nsinstall.exe.orig > nul 2> nul
+rem tools\xdelta -d -s moztools\bin\nsinstall.exe.orig start-script\nsinstall.xdelta moztools\bin\nsinstall.exe > nul 2> nul
+rem del moztools\bin\nsinstall.exe.orig > nul 2> nul
 
 echo         正在設定 NSIS...
 move download\nsisu-2.33.7z nsisu-2.33.7z > nul 2> nul
