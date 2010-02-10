@@ -116,7 +116,7 @@ rem call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin3
 rem call ..\start-script\get.bat "http://nchc.dl.sourceforge.net/project/gnuwin32/tar/1.13-1/tar-1.13-1-dep.zip" tar-1.13-1-dep.zip
 call ..\start-script\get.bat http://bitbucket.org/tortoisehg/thg-winbuild/downloads/mercurial-1.4.3.exe mercurial-1.4.3.exe
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/nsisu-2.33.7z nsisu-2.33.7z
-call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.0.7z tools1.0.7z
+call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/tools1.1.7z tools1.1.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/gcc-4.4.3-core-cxx-mingw.7z gcc-4.4.3-core-cxx-mingw.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/python2.5.4.7z python2.5.4.7z
 call ..\start-script\get.bat http://mozbuildtools.googlecode.com/files/libs-v1.7z libs-v1.7z
@@ -149,7 +149,7 @@ echo ___________________________________________________________________________
 
 echo         正在設定工具集...
 cd tools
-7za.exe x -y ..\download\tools1.0.7z > nul 2> nul
+7za.exe x -y ..\download\tools1.1.7z > nul 2> nul
 cd ..
 
 echo         正在設定 MinGW...
