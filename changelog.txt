@@ -9,6 +9,7 @@
  * 修改版本號到 1.2
  * 更新 Mercurial 到 1.4.2
  * 更新 tools
+ * 更新 GCC 到 4.4.3
 
 --- 2010-02-08 Jay Wang stu90206@gmail.com
  * 更新版本號到 1.1.1
