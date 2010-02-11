@@ -361,33 +361,29 @@
    int positioning = cursorXInChar * 4 / charAtPt.mReply.mRect.width;
 --- a/config/nsinstall_win.c
 +++ b/config/nsinstall_win.c
-@@ -55,6 +55,13 @@
+@@ -55,6 +55,11 @@
  }
  
 +#ifndef __MINGW32__
  int wmain(int argc, wchar_t *argv[ ])
  {
 +#else
-+int main()
++int main(int argc, wchar_t *argv[ ])
 +{
-+    int argc;
-+    wchar_t **argv = CommandLineToArgvW(GetCommandLineW(), &argc); 
 +#endif
      return shellNsinstall ( argv + 1 );
  }
 --- a/js/src/config/nsinstall_win.c
 +++ b/js/src/config/nsinstall_win.c
-@@ -55,6 +55,13 @@
+@@ -55,6 +55,11 @@
  }
  
 +#ifndef __MINGW32__
  int wmain(int argc, wchar_t *argv[ ])
  {
 +#else
-+int main()
++int main(int argc, wchar_t *argv[ ])
 +{
-+    int argc;
-+    wchar_t **argv = CommandLineToArgvW(GetCommandLineW(), &argc); 
 +#endif
      return shellNsinstall ( argv + 1 );
  }
