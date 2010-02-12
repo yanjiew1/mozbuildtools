@@ -360,25 +360,9 @@
    PRInt32 cursorXInChar = cursorInTopLevel.x - charAtPt.mReply.mRect.x;
    int positioning = cursorXInChar * 4 / charAtPt.mReply.mRect.width;
              int n;
- 
-             assert(*src == '\\');
--            where = fileName + wcslen(fileName);
--            wcscat(fileName, src);
-+            where = fileName + strlen(fileName);
-+            strcat(fileName, src);
-             sh_EnumerateFiles(fileName, where, fileFcn, arg, &n);
-             *nFiles += n;
-         } else {
--            assert(wcschr(fileName, '*') == NULL);
--            assert(wcschr(fileName, '?') == NULL);
-+            assert(strchr(fileName, '*') == NULL);
-+            assert(strchr(fileName, '?') == NULL);
-             (*nFiles)++;
-             if ((*fileFcn)(fileName, &fileData, arg) == FALSE) {
-                 retVal = FALSE;
 --- a/js/src/config/nsinstall_win.c
 +++ b/js/src/config/nsinstall_win.c
-@@ -54,9 +54,23 @@
+@@ -54,9 +54,22 @@
      }
  }
  
@@ -396,7 +380,6 @@
 +        mbsrtowcs(wargv[i],(const char **)&argv[i],size,NULL);
 +        *(wargv[i]+size)=L'\0';
 +    }
-+    wargv[argc]=malloc(sizeof(wchar_t));
 +    wargv[argc]=0x0;
 +
 +
@@ -406,7 +389,7 @@
  static int
 --- a/config/nsinstall_win.c
 +++ b/config/nsinstall_win.c
-@@ -54,9 +54,23 @@
+@@ -54,9 +54,22 @@
      }
  }
  
@@ -424,7 +407,6 @@
 +        mbsrtowcs(wargv[i],(const char **)&argv[i],size,NULL);
 +        *(wargv[i]+size)=L'\0';
 +    }
-+    wargv[argc]=malloc(sizeof(wchar_t));
 +    wargv[argc]=0x0;
 +
 +
